@@ -1,0 +1,48 @@
+.App-header {
+	background-color: #FAFAFA;
+	display: flex;
+	justify-content: center;
+}
+
+.App-header__nav {
+	padding:1em;
+	display:flex;
+	min-width: 960px;
+	max-width: 1170px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.App-header__nav a svg {
+	fill: #FFF;
+}
+
+.App-header__logo {
+	margin-left:1em;
+}
+
+.App-header__search {
+
+}
+
+.App-header__searchfield {
+	padding:1em;
+	border-radius: 4px;
+	border:none;
+	font-family: 'Lato';
+	width:200px;
+}
+
+.App-header__searchfield:focus {
+	outline:none;
+}
+
+.App-header__nav ul {
+	list-style: none;
+	display:flex;
+	-webkit-padding-start:0;
+}
+
+.App-header__nav ul > li {
+	margin-right: 1em;
+}

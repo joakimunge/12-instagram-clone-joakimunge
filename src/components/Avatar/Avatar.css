@@ -1,0 +1,14 @@
+.Avatar {
+	border-radius: 50%;
+	overflow: hidden;
+	margin-right: 1em;
+}
+
+.Avatar--small {
+	width:36px;
+	height:36px;
+}
+
+.Avatar img {
+	transform: scale(1.3);
+}

@@ -1,0 +1,12 @@
+.App-PhotoGrid__item {
+	margin-right:10px;
+	margin-bottom: 10px;
+}
+
+.App-PhotoGrid__item:last-child {
+	margin-right: 0;
+}
+
+.App-PhotoGrid__image img {
+	width:100%;
+}
