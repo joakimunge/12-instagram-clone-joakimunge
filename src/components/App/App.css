@@ -1,0 +1,26 @@
+main {
+  flex:1;
+  max-width: 960px;
+}
+
+ul {
+	-webkit-padding-start:0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	color: #FF6B6B;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  display:flex;
+  flex-direction: column;
+	background-color: #FAFAFA;
+	align-items: center;
+  
+}
