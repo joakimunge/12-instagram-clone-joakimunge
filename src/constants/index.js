@@ -1,0 +1,3 @@
+export const FETCH_PHOTOS_START = 'FETCH_PHOTOS_START'; // pROMISE PENDING
+export const FETCH_PHOTOS_SUCCESS = 'FETCH_PHOTOS_SUCCESS'; // Promise resolved
+export const FETCH_PHOTOS_FAILURE = 'FETCH_PHOTOS_FAILURE'; // Promise rejected

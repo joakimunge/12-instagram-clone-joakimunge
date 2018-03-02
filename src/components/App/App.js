@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {Header, Footer} from '../../components';
-import { Root } from '../../containers';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { ErrorMessage, PhotoModal, Header, Footer } from '../';
+import { Home, SignIn, SignUp, Profile } from '../../views';
 import './App.css';
 
 class App extends Component {
@@ -8,7 +9,16 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Root />
+        <main>
+					<Switch>
+						<Route exact path="/" component={Home} />
+						<Route exact path="/signup" component={SignUp} />
+						<Route exact path="/signin" component={SignIn} />
+						<Route exact path="/profile" component={Profile} />
+						<Route exact path="/photo" component={PhotoModal} />
+						<Route path="*" component={ErrorMessage} />
+					</Switch>
+				</main>
         <Footer />
       </div>
     );

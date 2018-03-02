@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { FeedItem } from '../components';
 
+import {
+	fetchPhotos
+} from '../actions';
 
-const PhotoFeed = () => {
-	return (
-		<section className="App-PhotoFeed">
-			<FeedItem />
-			<FeedItem />
-			<FeedItem />
-		</section>
-	)
+
+class PhotoFeed extends Component {
+	constructor(props) {
+		super(props);
+	}
+
+	componentDidMount() {
+		this.props.dispatch(fetchPhotos());
+	}
+
+	render() {
+		// console.log(this.props);
+		const {photos} = this.props;
+		return (
+			<section className="App-PhotoFeed">
+				{
+					photos.map(photo => (
+						<FeedItem key={photo.id} photo={photo} />
+					))
+				}
+			</section>
+		)
+	}
 }
 
-export default PhotoFeed;
+const mapStateToProps = state => ({
+	photos: state.photos
+})
+
+// export default PhotoFeed;
+export default connect(mapStateToProps)(PhotoFeed);
