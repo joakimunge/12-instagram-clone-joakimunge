@@ -1,0 +1,43 @@
+.Modal__backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.5);
+  padding-top:120px;
+}
+
+.Modal {
+  background-color: #fff;
+  max-width: 960px;
+  min-height: 300px;
+  margin: 0 auto;
+  display:flex;
+}
+
+.PhotoModal__image {
+  display:flex;
+}
+
+.PhotoModal__content {
+	display:flex;
+	flex-direction: column;
+}
+
+.PhotoModal__user {
+	display:flex;
+	align-items: center;
+	padding:1em;
+}
+
+.PhotoModal__username {
+	margin-right: 0.5em;
+	font-weight: 600;
+	color:#1A1C1C;
+	font-size:14px;
+}
+
+.PhotoModal__username:hover {
+	color:#FF6B6B;
+}
