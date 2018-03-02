@@ -4,7 +4,12 @@ import { Avatar } from '../'
 import './FeedItem.css';
 
 class FeedItem extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    const {photo} = this.props;
     return (
       <article className="FeedItem">
       	<div className="FeedItem__user">
@@ -12,7 +17,7 @@ class FeedItem extends Component {
       		<Link to="#"><span className="FeedItem__username">joakimunge</span></Link>
       	</div>
       	<div className="FeedItem__image">
-      		<img src="https://s-media-cache-ak0.pinimg.com/736x/29/06/49/29064960c2b0e3b0ab3fa1e9005ee971--jackson-wyoming-jackson-hole.jpg" alt="Feed Image" />
+      		<img src={photo.imageUrl} alt="Feed Image" />
       	</div>
       	<div className="FeedItem__social">
       		<div className="FeedItem__interactions">
