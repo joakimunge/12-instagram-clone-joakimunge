@@ -1,6 +1,10 @@
 .App-PhotoGrid__item {
-	margin-right:10px;
-	margin-bottom: 10px;
+	margin-right:20px;
+	margin-bottom: 20px;
+}
+
+.App-PhotoGrid__item img:hover {
+	cursor: pointer;
 }
 
 .App-PhotoGrid__item:last-child {
