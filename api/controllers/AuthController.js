@@ -3,13 +3,14 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt');
-var config = require('../config');
 
 var User = require('../models/User');
 
+var config = require('../config');
+var VerifyToken = require('../middleware/VerifyToken');
+
 router.use(bodyParser.urlencoded({extended: false}));
 router.use(bodyParser.json());
-
 
 router.post('/register', function(req, res) {
 	User.create({
@@ -34,7 +35,6 @@ router.post('/register', function(req, res) {
 });
 
 router.post('/login', function(req, res) {
-	console.log(req.body);
 	User.findOne({ email: req.body.email }, function (error, user) {
 		if (error) {
 			return res.status(500).send('Internal server error.');
@@ -46,7 +46,6 @@ router.post('/login', function(req, res) {
 
 		bcrypt.compare(req.body.password, user.password)
 			.then(function(valid) {
-				console.log(valid);
 				if (!valid) {
 					return res.status(401).send({auth:false, token: null, message: 'Password invalid.'});
 				}
@@ -56,22 +55,11 @@ router.post('/login', function(req, res) {
 				});
 
 				return res.status(200).send({auth: true, token: token})
-
 		});
 	});
 });
 
-router.get('/me', function(req, res) {
-	var token = req.headers['x-access-token'];
-	if (!token) {
-		return res.status(401).send({auth: false, message: 'No token provided.'});
-	}
-
-	jwt.verify(token, config.secret, function(error, decoded) {
-		if (error) {
-			return res.send(500).send({auth: false, message: 'Failed to authenticate token.'});
-		}
-
+router.get('/me', VerifyToken, function(req, res) {
 		User.findById(decoded.id, {password: 0}, function(error, user) {
 			if (error) {
 				return res.status(500).send("Something went wrong when trying to get user.");
@@ -83,7 +71,6 @@ router.get('/me', function(req, res) {
 
 			res.status(200).send(user);
 		})
-	})
 })
 
 
