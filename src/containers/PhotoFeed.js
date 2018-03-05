@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FeedItem } from '../components';
+import { FeedItem, Loader } from '../components';
 
 import {
 	fetchPhotos
@@ -8,23 +8,22 @@ import {
 
 
 class PhotoFeed extends Component {
-	constructor(props) {
-		super(props);
-	}
 
 	componentDidMount() {
 		this.props.dispatch(fetchPhotos());
 	}
 
 	render() {
-		// console.log(this.props);
 		const {photos} = this.props;
 		return (
 			<section className="App-PhotoFeed">
-				{
+				{ !this.props.isFetching 
+					?
 					photos.map(photo => (
-						<FeedItem key={photo.id} photo={photo} />
+							<FeedItem key={photo.id} photo={photo} />
 					))
+					:
+					<Loader />
 				}
 			</section>
 		)
@@ -32,8 +31,8 @@ class PhotoFeed extends Component {
 }
 
 const mapStateToProps = state => ({
-	photos: state.photos
+	photos: state.photos,
+	isFetching: state.isFetching
 })
 
-// export default PhotoFeed;
 export default connect(mapStateToProps)(PhotoFeed);

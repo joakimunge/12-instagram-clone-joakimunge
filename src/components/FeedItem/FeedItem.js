@@ -4,9 +4,6 @@ import { Avatar } from '../'
 import './FeedItem.css';
 
 class FeedItem extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const {photo} = this.props;
@@ -17,14 +14,14 @@ class FeedItem extends Component {
       		<Link to="#"><span className="FeedItem__username">joakimunge</span></Link>
       	</div>
       	<div className="FeedItem__image">
-      		<img src={photo.imageUrl} alt="Feed Image" />
+      		<img src={photo.imageUrl} alt="Feeditem" />
       	</div>
       	<div className="FeedItem__social">
       		<div className="FeedItem__interactions">
       			<ul>
       				<li><i className="far fa-heart"></i></li>
       				<li><i className="far fa-comment"></i></li>
-      				<li>25 Likes</li>
+      				<li>{photo.likes} Likes</li>
       			</ul>
       		</div>
       		<div className="FeedItem__description">

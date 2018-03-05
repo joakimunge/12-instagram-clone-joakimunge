@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { ErrorMessage, PhotoModal, Header, Footer } from '../';
 import { Home, SignIn, SignUp, Profile } from '../../views';
 import './App.css';

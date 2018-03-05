@@ -1,11 +1,7 @@
 import React from 'react';
-import {ReactDOM, render} from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import './index.css';
-
-import registerServiceWorker from './registerServiceWorker';
-import { App } from './components/';
+import {render} from 'react-dom';
 import { Root } from './containers/';
+import './index.css';
 
 render(
 	<Root />, 

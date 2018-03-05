@@ -1,12 +1,11 @@
 import React from 'react';
-import { Avatar } from '../';
 import './UserHero.css';
 
 const UserHero = () => {
 	return (
 		<section className="UserHero">
 			<div className="Avatar--huge">
-				<img src="https://avatars1.githubusercontent.com/u/24225542?s=460&v=4" width="148px"/>
+				<img src="https://avatars1.githubusercontent.com/u/24225542?s=460&v=4" width="148px" alt="avatar"/>
 			</div>
 			<div className="UserHero__info">
 				<h3>joakimunge</h3>

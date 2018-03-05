@@ -2,9 +2,8 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { App, ErrorMessage, PhotoModal } from '../components';
-import { Home, SignIn, SignUp, Profile } from '../views';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { App } from '../components';
 import rootReducer from '../reducers';
 
 

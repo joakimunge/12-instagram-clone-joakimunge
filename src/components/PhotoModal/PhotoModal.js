@@ -16,7 +16,7 @@ class PhotoModal extends Component {
       <div className="Modal__backdrop">
         <div className="Modal">
           <div className="PhotoModal__image">
-            <img src="https://s-media-cache-ak0.pinimg.com/736x/29/06/49/29064960c2b0e3b0ab3fa1e9005ee971--jackson-wyoming-jackson-hole.jpg" alt="Modal Image" />
+            <img src="https://s-media-cache-ak0.pinimg.com/736x/29/06/49/29064960c2b0e3b0ab3fa1e9005ee971--jackson-wyoming-jackson-hole.jpg" alt="Modal" />
           </div>
           <div className="PhotoModal__content">
             <div className="PhotoModal__user">
