@@ -1,27 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-var User = require ('./User');
+var User = require ('../models/User');
 
 router.use(bodyParser.urlencoded({
 	extended: true
 }));
-
-router.post('/register', function(req, res) {
-	User.create({
-		name: req.body.name,
-		email: req.body.email,
-		password: req.body.password
-	}, function(error, user) {
-
-		if (error) {
-			return res.status(500).send("An error occurred while trying to register user. Status code 500: Internal server error")
-		} else {
-			return res.status(200).send(user);	
-		}
-
-	})
-});
 
 router.get('/', function(req, res) {
 	User.find({}, function(error, users) {
