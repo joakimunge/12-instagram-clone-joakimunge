@@ -1,4 +1,16 @@
+.App-footer {
+	padding-bottom:3em;
+}
+
 .App-footer, .App-footer a {
 	color: #d8d8d8;
 	text-decoration: none;
+}
+
+.App-footer__attribution {
+	font-size:12px;
+}
+
+.App-footer__attribution a {
+	color: #888;
 }
