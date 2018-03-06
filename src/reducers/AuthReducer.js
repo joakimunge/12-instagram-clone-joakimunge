@@ -4,7 +4,10 @@ import {
 	LOGIN_FAILURE,
 	LOGOUT_REQUEST,
 	LOGOUT_SUCCESS,
-	LOGOUT_FAILURE
+	LOGOUT_FAILURE,
+	TOKEN_REQUEST,
+	TOKEN_SUCCESS,
+	TOKEN_FAILURE
 } from '../constants';
 
 const initialState = {
@@ -35,6 +38,29 @@ export const authReducer = (state = initialState, action) => {
 				isAuthenticated: false,
 				message: action.message
 			})
+
+		case TOKEN_REQUEST:
+			return Object.assign({}, state, {
+				isFetching: true,
+				isAuthenticated: false,
+				token: action.token
+			})
+
+		case TOKEN_SUCCESS:
+			return Object.assign({}, state, {
+				isFetching: false,
+				isAuthenticated: true,
+				user: action.user,
+				message: 'Authentication successful!'
+			})
+
+		case TOKEN_FAILURE:
+			return Object.assign({}, state, {
+				isFetching: false,
+				isAuthenticated: false,
+				message: action.message
+			})
+			
 		default:
 			return state;
 	}
