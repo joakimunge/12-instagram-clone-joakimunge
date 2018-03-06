@@ -1,35 +1,10 @@
-import {
-	FETCH_PHOTOS_START,
-	FETCH_PHOTOS_SUCCESS,
-	FETCH_PHOTOS_FAILURE
-} from '../constants';
+import { combineReducers } from 'redux';
+import { rootReducer } from './RootReducer';
+import { authReducer } from './AuthReducer.js';
 
-const initialState = {
-	photos: [],
-	isFetching: false //For loaders
+export const reducers = combineReducers({
+	auth: authReducer,
+	root: rootReducer
+})
 
-}
-
-const rootReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case FETCH_PHOTOS_START:
-			return {
-				...state,
-				isFetching: true
-			}
-		case FETCH_PHOTOS_SUCCESS:
-			return {
-				...state, photos: action.payload,
-				isFetching: false
-			}
-		case FETCH_PHOTOS_FAILURE:
-			return {
-				...state,
-				isFetching: false
-			}
-		default:
-			return state;
-	}
-}
-
-export default rootReducer;
+export default reducers;
