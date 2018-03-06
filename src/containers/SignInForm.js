@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FeedItem, Loader } from '../components';
 
@@ -28,7 +29,18 @@ class SignInForm extends Component {
 		});
 	}
 
+	componentWillUpdate() {
+		if (this.props.isAuthenticated) {
+			return true;
+		}
+	}
+
 	render() {
+		const {isFetching, isAuthenticated} = this.props;
+		if (isAuthenticated) {
+			return <Redirect to="/" />
+		}
+
 		return(
 			<section className="App-signin">
 				<h2 className="App-signin">This is sign in</h2>
@@ -46,7 +58,8 @@ class SignInForm extends Component {
 }
 
 const mapStateToProps = state => ({
-	isFetching: state.auth.isFetching
+	isFetching: state.auth.isFetching,
+	isAuthenticated: state.auth.isAuthenticated
 })
 
 export default connect(mapStateToProps)(SignInForm);
