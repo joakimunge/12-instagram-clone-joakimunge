@@ -8,3 +8,12 @@ body {
   font-family: 'Lato', 'Helvetica', 'Arial', sans-serif;
   color: 	#353839;
 }
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	color: #FF6B6B;
+}
+
