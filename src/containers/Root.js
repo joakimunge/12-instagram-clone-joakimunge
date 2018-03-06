@@ -4,14 +4,14 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { App } from '../components';
-import rootReducer from '../reducers';
+import reducers from '../reducers';
 
 
-const middleware = [thunk]; //Define middleware for redux store
+const middleware = [thunk];
 const store = createStore(
-	rootReducer, 
+	reducers, 
 	applyMiddleware(...middleware)
-); //Apply middleware to store
+); 
 
 
 const Root = () => {
