@@ -47,7 +47,15 @@ export const loginUser = (creds) => dispatch => {
 
 	return fetch('/auth/login', options)
 		.then(res => res.json())
-		.then(res => console.log(res))
+		.then(res => {
+			if (!res.auth) {
+				dispatch(loginFailure(res.message || 'Something went wrong'));
+				return Promise.reject(res)
+			}
+			localStorage.setItem('id', res.user);
+			localStorage.setItem('access_token', res.token);
+			dispatch(loginSuccess(res))
+		})
 		.catch(err => console.log("Error: ", err));
 }
 
