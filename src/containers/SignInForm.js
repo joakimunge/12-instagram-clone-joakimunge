@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { FeedItem, Loader } from '../components';
+
+import {
+	loginUser
+} from '../actions';
 
 class SignInForm extends Component {
 
@@ -11,20 +17,7 @@ class SignInForm extends Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		const headers = new Headers();
-		headers.append('Content-Type', 'application/json');
-
-		const options = {
-			method: 'POST',
-			headers,
-			body: JSON.stringify(this.state)
-		};
-
-		const request = new Request('/auth/login', options);
-
-		fetch(request)
-			.then(res => res.json())
-			.then(res => console.log(res));
+		this.props.dispatch(loginUser(this.state));
 	}
 
 	handleChange(e) {
@@ -52,4 +45,8 @@ class SignInForm extends Component {
 	}
 }
 
-export default SignInForm;
+const mapStateToProps = state => ({
+	isFetching: state.auth.isFetching
+})
+
+export default connect(mapStateToProps)(SignInForm);
