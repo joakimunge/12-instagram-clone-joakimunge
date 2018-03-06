@@ -69,8 +69,8 @@ router.post('/login', function(req, res) {
 	});
 });
 
-router.get('/me', VerifyToken, function(req, res) {
-	User.findById(decoded.id, {password: 0}, function(error, user) {
+router.get('/verify', VerifyToken, function(req, res) {
+	User.findById(req.userId, {password: 0}, function(error, user) {
 		if (error) {
 			return res.status(500).send("Something went wrong when trying to get user.");
 		}
