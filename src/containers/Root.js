@@ -1,10 +1,16 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import { App } from '../components';
 import reducers from '../reducers';
+
+import {
+	verifyToken
+} from '../actions';
 
 
 const middleware = [thunk];
@@ -12,6 +18,13 @@ const store = createStore(
 	reducers, 
 	applyMiddleware(...middleware)
 ); 
+
+const user = localStorage.getItem('id') || null;
+const token = localStorage.getItem('access_token') || null;
+
+if (user && token) {
+	store.dispatch(verifyToken(token));
+}
 
 
 const Root = () => {
