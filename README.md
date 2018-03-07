@@ -1,8 +1,7 @@
 # Todo
 - Improve require auth HOC (or look into options). Still a bit wonky.
 - Add requireAuth HOC to more routes
-- Make posts, comments, likes data tables in mLab
-- Begin work on likes and comments for posts. (LikeActions, CommentActions etc.)
+- Add comments & likes to correct post when creating commment & like
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
