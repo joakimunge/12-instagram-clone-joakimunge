@@ -4,7 +4,10 @@ var bcrypt = require('bcrypt');
 var UserSchema = new mongoose.Schema({
 	name: {type: String, maxlength: [100, "Too long name"]},
 	email: String,
-	password: {type: String, minlength: [8, "Too short password"]}
+	password: {type: String, minlength: [8, "Too short password"]},
+	posts: {type: Array},
+	likes: {type: Array},
+	comments: {type: Array}
 });
 
 UserSchema.pre('save', function(next) {

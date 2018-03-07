@@ -6,7 +6,7 @@ var app = express();
 var UserController = require('./controllers/UserController');
 var AuthController = require('./controllers/AuthController');
 
-app.use(morgan('combined'));
+app.use(morgan('dev'));
 app.use('/users', UserController);
 app.use('/auth', AuthController);
 
