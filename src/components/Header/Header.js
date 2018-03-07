@@ -17,6 +17,7 @@ const Header = () => {
 					<Link to="/">
 						<img src={logo} className="App-logo" alt="logo" width="36px"/>
 					</Link>
+						<h3>Aperture</h3>
 				</div>
 				<div className="App-header__search">
 					<input className="App-header__searchfield" placeholder="Search"/>

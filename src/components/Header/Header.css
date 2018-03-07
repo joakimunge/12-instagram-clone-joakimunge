@@ -19,10 +19,13 @@
 
 .App-header__logo {
 	margin-left:1em;
+	display:flex;
+	align-items: center;
+	color:#353839;
 }
 
-.App-header__search {
-
+.App-header__logo h3 {
+	margin-left: 1em;
 }
 
 .App-header__searchfield {
