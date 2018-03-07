@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
 var UserSchema = new mongoose.Schema({
+	username: {type: String, minlength: [3, "Username must be at least 3 characters"]},
 	name: {type: String, maxlength: [100, "Too long name"]},
 	email: String,
 	password: {type: String, minlength: [8, "Too short password"]},
