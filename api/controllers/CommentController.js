@@ -2,22 +2,23 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var Comment = require ('../models/Comment');
+var VerifyToken = require('../middleware/VerifyToken');
 
 router.use(bodyParser.urlencoded({
 	extended: true
 }));
 
-router.post('/', function(req, res) {
+router.post('/', VerifyToken, function(req, res) {
 	Comment.create({
 			body: req.body.body,
-			author: req.body.user
+			author: req.userId
 		}, function(error, comment) {
 
 			if (error) {
 				return res.status(500).send("An error occurred while trying to add comment. Status code 500: Internal server error")
 			} 
 			else {
-				return res.status(200).send({auth: true, comment: token});	
+				return res.status(200).send({auth: true, comment: comment});	
 			}
 
 		});
