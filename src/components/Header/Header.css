@@ -1,8 +1,17 @@
 .App-header {
-	background-color: #FAFAFA;
+	background-color: #FFF;
 	display: flex;
 	justify-content: center;
 	width:100%;
+	border-bottom: 1px solid #d8d8d8;
+}
+
+.App-header::before {
+	content:"";
+	height:3px;
+	width:100%;
+	background: linear-gradient(to right, #c33764, #ffb814, #00cbff, #f60cff, #1d2671);
+	position: absolute;
 }
 
 .App-header__nav {
@@ -11,6 +20,7 @@
 	display:flex;
 	align-items: center;
 	justify-content: space-between;
+	max-width: 1010px;
 }
 
 .App-header__nav a svg {
@@ -25,7 +35,10 @@
 }
 
 .App-header__logo h3 {
-	margin-left: 1em;
+	font-size: 22px;
+	font-family: 'Pacifico', serif;
+	color: #545454;
+	margin:0 0 0 1em;
 }
 
 .App-header__searchfield {
@@ -34,6 +47,7 @@
 	border:none;
 	font-family: 'Lato';
 	width:200px;
+	background-color: #fafafa;
 }
 
 .App-header__searchfield:focus {
