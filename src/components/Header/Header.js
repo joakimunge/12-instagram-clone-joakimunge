@@ -26,7 +26,7 @@ const Header = () => {
 					<ul>
 						<li><Link to="/explore"><img src={explore} className="App-explore" alt="explore" width="36px"/></Link></li>
 						<li><img src={notification} className="App-notification" alt="notifications" width="36px"/></li>
-						<li><Link to="/profile"><img src={user} className="App-user" alt="my profile" width="36px"/></Link></li>
+						<li><Link to="/users/manchildman"><img src={user} className="App-user" alt="my profile" width="36px"/></Link></li>
 					</ul>
 				</div>
 			</nav>
