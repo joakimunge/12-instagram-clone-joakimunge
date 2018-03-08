@@ -11,7 +11,7 @@ class FeedItem extends Component {
       <article className="FeedItem">
       	<div className="FeedItem__user">
       		<Avatar />
-      		<Link to="#"><span className="FeedItem__username">{photo.author}</span></Link>
+      		<Link to={`/users/${photo.author}`} ><span className="FeedItem__username">{photo.author}</span></Link>
       	</div>
       	<div className="FeedItem__image">
       		<img src={photo.image} alt="Feeditem" />
