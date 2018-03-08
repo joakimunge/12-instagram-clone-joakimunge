@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Loader } from '../';
 
 export default function (ComposedComponent) {
 	class Authentication extends Component {
-
-		componentWillMount() {
-			if(!this.props.isAuthenticated) {
-				return this.props.history.push('/signin');
-			}
-		}
 
 		componentWillUpdate(nextProps) {
       if (!nextProps.isAuthenticated) {
@@ -17,20 +13,25 @@ export default function (ComposedComponent) {
     }
 
 		render() {
-			const { isAuthenticated } = this.props;
-			{
-				if (isAuthenticated) {
-				return <ComposedComponent {...this.props} />;
-				}
+			const { isAuthenticated, isFetching } = this.props;
+			if (isFetching) {
+				return <Loader />;
 			}
-			return null
+
+			if (isAuthenticated) {
+				return <ComposedComponent {...this.props} />;
+			} 
+			
+			return <Redirect to="/signin" />;
+			
 		}
 
 	}
 
 	const mapStateToProps = state => {
 		return {
-			isAuthenticated: state.auth.isAuthenticated
+			isAuthenticated: state.auth.isAuthenticated,
+			isFetching: state.auth.isFetching
 		}		
 	}
 
