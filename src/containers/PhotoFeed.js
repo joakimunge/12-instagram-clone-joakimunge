@@ -14,16 +14,16 @@ class PhotoFeed extends Component {
 	}
 
 	render() {
-		const {photos} = this.props;
+		const {photos, isFetching} = this.props;
+
+		if (isFetching) {
+			return <Loader />
+		}
+
 		return (
 			<section className="App-PhotoFeed">
-				{ !this.props.isFetching 
-					?
-					photos.map(photo => (
-							<FeedItem key={photo._id} photo={photo} />
-					))
-					:
-					<Loader />
+				{ 
+					photos.map(photo => <FeedItem key={photo._id} photo={photo} /> )
 				}
 			</section>
 		)
