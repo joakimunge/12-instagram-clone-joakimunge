@@ -11,22 +11,22 @@ class FeedItem extends Component {
       <article className="FeedItem">
       	<div className="FeedItem__user">
       		<Avatar />
-      		<Link to="#"><span className="FeedItem__username">joakimunge</span></Link>
+      		<Link to="#"><span className="FeedItem__username">{photo.author}</span></Link>
       	</div>
       	<div className="FeedItem__image">
-      		<img src={photo.imageUrl} alt="Feeditem" />
+      		<img src={photo.image} alt="Feeditem" />
       	</div>
       	<div className="FeedItem__social">
       		<div className="FeedItem__interactions">
       			<ul>
       				<li><i className="far fa-heart"></i></li>
       				<li><i className="far fa-comment"></i></li>
-      				<li>{photo.likes} Likes</li>
+      				<li>{photo.likes.length} Likes</li>
       			</ul>
       		</div>
       		<div className="FeedItem__description">
-      			<span className="FeedItem__username">joakimunge</span>
-      			<p>Vi tipsar om hur du kan skapa egna inbjudningskort med flytande bläck i nya magasinet Sisters in law. @sistersinlaw.se </p>
+      			<span className="FeedItem__username">{photo.author}</span>
+      			<p>{photo.description}</p>
       		</div>
       		<div className="FeedItem__comments">
       			<div className="FeedItem__comment">
