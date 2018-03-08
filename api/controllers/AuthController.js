@@ -75,7 +75,7 @@ router.get('/verify', VerifyToken, function(req, res) {
 		}
 
 		if (!user) {
-			return res.status(404).send("No user found.");
+			return res.status(404).json("No user found.");
 		}
 
 		res.status(200).send(user);
