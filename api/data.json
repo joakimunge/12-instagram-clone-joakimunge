@@ -1,0 +1,78 @@
+{
+    "users": {
+        "_model": "User",
+        "manchildman": {
+            "name": "Man Childman",
+            "username": "manchildman",
+            "email": "manchildman@test.com",
+            "imageUrl": "https://api.adorable.io/avatars/285/1@1.png",
+            "password": "testing123",
+            "posts": [],
+            "likes": [],
+            "comments": []
+
+        },
+        "joakim": {
+            "name": "Joakim Unge",
+            "username": "joakimunge",
+            "email": "joakim@test.com",
+            "imageUrl": "https://api.adorable.io/avatars/285/2@2.png",
+            "password": "testing123",
+            "posts": [],
+            "likes": [],
+            "comments": []
+
+        },
+        "tom": {
+            "name": "Tom Ekander",
+            "username": "tomekander",
+            "email": "tom@test.com",
+            "imageUrl": "https://api.adorable.io/avatars/285/3@3.png",
+            "password": "testing123",
+            "posts": [],
+            "likes": [],
+            "comments": []
+
+        },
+        "axel": {
+            "name": "Axel Olsson",
+            "username": "axelolsson",
+            "email": "axel@test.com",
+            "imageUrl": "https://api.adorable.io/avatars/285/4@4.png",
+            "password": "testing123",
+            "posts": [],
+            "likes": [],
+            "comments": []
+        }
+    },
+    "posts": {
+    	"post1": {
+    			"image": "https://unsplash.it/640?image=133",
+					"description": "This is post number 1. Awesome!",
+					"author": "manchildman",
+					"likes": [],
+					"comments": []
+    	},
+    	"post2": {
+    			"image": "https://unsplash.it/640image=981",
+					"description": "This is post number 2. Awesome!",
+					"author": "joakimunge",
+					"likes": [],
+					"comments": []
+    	},
+    	"post3": {
+    			"image": "https://unsplash.it/640?image=698",
+					"description": "This is post number 3. Awesome!",
+					"author": "tomekander",
+					"likes": [],
+					"comments": []
+    	},
+    	"post4": {
+    			"image": "https://unsplash.it/640?image=435",
+					"description": "This is post number 4. Awesome!",
+					"author": "axelolsson",
+					"likes": [],
+					"comments": []
+    	}
+    }
+}
