@@ -20,7 +20,7 @@ class PhotoFeed extends Component {
 				{ !this.props.isFetching 
 					?
 					photos.map(photo => (
-							<FeedItem key={photo.id} photo={photo} />
+							<FeedItem key={photo._id} photo={photo} />
 					))
 					:
 					<Loader />
