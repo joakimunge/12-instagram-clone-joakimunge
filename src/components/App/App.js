@@ -13,10 +13,10 @@ class App extends Component {
         <main>
 					<Switch>
 						<Route exact path="/" component={requireAuth(Home)} />
+						<Route exact path="/users/:username" component={requireAuth(Profile)} />
+						<Route exact path="/posts/:post" component={requireAuth(PhotoModal)} />
 						<Route exact path="/signup" component={SignUp} />
 						<Route exact path="/signin" component={SignIn} />
-						<Route exact path="/profile" component={Profile} />
-						<Route exact path="/photo" component={PhotoModal} />
 						<Route path="*" component={ErrorMessage} />
 					</Switch>
 				</main>
