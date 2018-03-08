@@ -17,12 +17,11 @@ class GridItem extends Component {
   }
 
 	render() {
-		const {photo} = this.props;	
-		console.log(photo);
+		const photo = this.props;	
 		return (
 			<article className="App-PhotoGrid__item">
 				<div className="App-PhotoGrid__image" onClick={this.toggleModal}>
-					<img src="https://s-media-cache-ak0.pinimg.com/736x/29/06/49/29064960c2b0e3b0ab3fa1e9005ee971--jackson-wyoming-jackson-hole.jpg" alt="Griditem" />
+					<img src={photo.image} alt="Griditem" />
 				</div>
 				<PhotoModal show={this.state.isOpen}
           onClose={this.toggleModal}>
