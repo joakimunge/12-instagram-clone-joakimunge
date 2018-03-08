@@ -3,7 +3,7 @@ import { PhotoFeed } from '../containers';
 
 const Home = () => {
     return (
-        <div className="Home">
+        <div className="Home" style={{display: 'flex', flexDirection: 'column'}}>
             <PhotoFeed />
         </div>
     )
