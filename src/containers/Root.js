@@ -9,7 +9,8 @@ import { App } from '../components';
 import reducers from '../reducers';
 
 import {
-	verifyToken
+	verifyToken,
+	tokenFailure
 } from '../actions';
 
 
@@ -24,6 +25,8 @@ const token = localStorage.getItem('access_token') || null;
 
 if (user && token) {
 	store.dispatch(verifyToken(token));
+} else {
+	store.dispatch(tokenFailure('You are not authenticated'));
 }
 
 
