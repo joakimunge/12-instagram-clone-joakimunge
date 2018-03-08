@@ -4,7 +4,8 @@ import {
 	FETCH_PHOTOS_FAILURE
 } from '../constants';
 
-const url = `http://5a99458d5217dd0012c78947.mockapi.io/photos`;
+const mockapi = `http://5a99458d5217dd0012c78947.mockapi.io/photos`;
+const postsUrl = `/posts/all`;
 
 export const requestPhotos = () => ({
 	type: FETCH_PHOTOS_START
@@ -21,7 +22,7 @@ export const rejectedPhotos = () => ({
 
 export const fetchPhotos = () => dispatch => {
 	dispatch(requestPhotos());
-	return fetch(url)
+	return fetch(postsUrl)
 		.then(res => res.json())
 		.then(data => {
 			console.log('Successfully got data: ', data);
