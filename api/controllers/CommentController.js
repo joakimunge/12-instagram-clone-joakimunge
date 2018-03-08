@@ -54,5 +54,9 @@ router.put('/:id', function(req, res) {
 	})
 })
 
+router.get('/all', VerifyToken, function(req, res) {
+	Comment.find()
+})
+
 module.exports = router;
 
