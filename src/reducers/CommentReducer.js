@@ -35,4 +35,4 @@ export const commentReducer = (state = initialState, action) => {
 	}
 }
 
-export default authReducer;
+export default commentReducer;
