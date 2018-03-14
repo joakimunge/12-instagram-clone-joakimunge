@@ -8,8 +8,34 @@ var VerifyToken = require('../middleware/VerifyToken');
 router.use(bodyParser.urlencoded({
 	extended: true
 }));
+router.use(bodyParser.json());
 
 router.post('/', VerifyToken, function(req, res) {
+	Post.findAndModify({
+		query: {_id: req.postId},
+		$addToSet: {'likes': {$elemMatch: {author: req.userUd}}},
+		function(error, post) {
+			if(error) {
+				console.log(error);
+				return;
+			}
+			console.log(post)
+			return;
+		}
+	})
+
+	return console.log(done);
+	
+	Post.findOne({'likes': {$elemMatch: {author: req.userId}}}, function(error, post) {
+		if (error) {
+			console.log(error);
+			return;
+		}
+		console.log(post);
+		return;
+	});
+
+	
 	Like.create({
 			author: req.userId
 		}, function(error, like) {
@@ -17,7 +43,13 @@ router.post('/', VerifyToken, function(req, res) {
 				return res.status(500).send("An error occurred while trying to add like. Status code 500: Internal server error")
 			} 
 			else {
-				return res.status(200).send({auth: true, like: like});	
+				Post.findByIdAndUpdate(req.body.postId, { $push: { likes: like }}, function(error, like) {
+					if (error) {
+							return res.status(500).send("An error occurred while trying to add like. Status code 500: Internal server error")
+						} 
+					
+					return res.status(200).send({auth: true, like: like});							
+				})
 			}
 		}
 	);

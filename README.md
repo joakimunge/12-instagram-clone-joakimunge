@@ -1,10 +1,12 @@
 # Todo
+**- FIX LIKE TOGGLE QUERY BEFORE ANYTHING ELSE**
 - Add comments & likes to correct post when creating commment & like
 - Render comments from post. (Look into advanced mongoose queries from arrays)
 - Move comment form to separate component
 - Make like-component
 - Re-render component on successful comment post
 - Update component on like/comment
+
 
 ## Quick Start
 
