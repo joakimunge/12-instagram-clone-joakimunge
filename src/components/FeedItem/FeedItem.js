@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Avatar } from '../'
+import { Avatar, Like } from '../'
 import './FeedItem.css';
 
 import {
@@ -57,7 +57,7 @@ class FeedItem extends Component {
       	<div className="FeedItem__social">
       		<div className="FeedItem__interactions">
       			<ul>
-      				<li><i className="far fa-heart"></i></li>
+      				<Like {...photo}/>
       				<li><i className="far fa-comment"></i></li>
       				<li>{photo.likes.length} Likes</li>
       			</ul>
