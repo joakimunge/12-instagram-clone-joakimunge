@@ -1,0 +1,17 @@
+.FeedItem__comment .FeedItem__comment__delete {
+	margin-left: auto;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	padding:0.2em;
+	font-size: 16px;
+	color: #d8d8d8;
+}
+
+.FeedItem__comment > .FeedItem__comment__delete:hover {
+	cursor: pointer;
+	color: #FF6B6B;
+}
+
+.FeedItem__comment:hover > .FeedItem__comment__delete {
+	opacity: 1;
+}
