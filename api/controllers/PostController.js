@@ -36,7 +36,7 @@ router.post('/', VerifyToken, function(req, res) {
 		});
 })
 
-router.get('/:id', VerifyToken ,function(req, res) {
+router.get('/:id', function(req, res) {
 	Post.findById(req.params.id, function(error, post) {
 		if (error) {
 			return res.status(500).send("An error occurred while getting post info. Status code 500: Internal server error")
