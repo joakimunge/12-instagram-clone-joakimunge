@@ -1,4 +1,4 @@
-export { fetchPhotos } from './PhotoActions.js';
+export { fetchPhotos, fetchPhotoInfo } from './PhotoActions.js';
 export { createComment } from './CommentActions.js';
 export { createLike } from './LikeActions.js';
 export { loginUser, logoutUser } from './AuthActions.js';

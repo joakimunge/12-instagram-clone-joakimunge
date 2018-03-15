@@ -16,14 +16,13 @@ export const commentSuccess = (comment) => ({
 	payload: comment
 });
 
-export const commentFailure = () => ({
-	type: CREATE_COMMENT_FAILURE
+export const commentFailure = (comment) => ({
+	type: CREATE_COMMENT_FAILURE,
+	payload: comment
 });
 
 export const createComment = (comment) => dispatch => {
 	dispatch(requestComment());
-
-	console.log(comment);
 
 	const options = {
 		method: 'POST',
@@ -42,6 +41,6 @@ export const createComment = (comment) => dispatch => {
 		})
 		.catch(error => {
 			console.error('An error occurred: ', error);
-			dispatch(commentFailure())
+			dispatch(commentFailure(comment))
 		})
 }

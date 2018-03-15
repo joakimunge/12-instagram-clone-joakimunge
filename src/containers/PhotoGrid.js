@@ -27,12 +27,12 @@ class PhotoGrid extends Component {
 		let photoRows = [];
 
 		if (photos.length > 0) {
-			photos.map((photo, i)=> {
+			photos.map((photo, i) => {
 				if (i % 3 === 0 || i === 0) {
 					row = [];
 					photoRows.push(row);
 				}
-				row.push(photo)
+				return row.push(photo)
 			})
 		}
 
@@ -43,10 +43,10 @@ class PhotoGrid extends Component {
 		return(
 			<section className="App-PhotoGrid">
 			{
-				photoRows.map((row, i) => {
+				photoRows.map((row, key) => {
 					return(
-					<div key={i} style={styles} className="App-PhotoGrid__row">
-						{ row.map((photo) => <GridItem key={photo.id} {...photo} />) }
+					<div key={key} style={styles} className="App-PhotoGrid__row">
+						{ row.map((photo) => <GridItem key={photo._id} {...photo} />) }
 					</div>
 					)
 				})

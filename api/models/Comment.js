@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 var CommentSchema = new mongoose.Schema({
 	body: {type: String, minlength: [1, "A comment can't be empty"]},
-	author: {type: String}
+	author: {type: String},
+	author_id: {type: String}
 });
 
 mongoose.model('Comment', CommentSchema);
