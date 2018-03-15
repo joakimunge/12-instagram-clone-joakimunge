@@ -6,6 +6,7 @@ var User = require ('../models/User');
 router.use(bodyParser.urlencoded({
 	extended: true
 }));
+router.use(bodyParser.json());
 
 router.get('/', function(req, res) {
 	User.find({}, function(error, users) {
@@ -17,8 +18,8 @@ router.get('/', function(req, res) {
 	})
 })
 
-router.get('/:id', function(req, res) {
-	User.findById(req.params.id, function(error, user) {
+router.get('/:username', function(req, res) {
+	User.findOne({ username: req.params.username }, {password: 0}, function(error, user) {
 		if (error) {
 			return res.status(500).send("An error occurred while getting user info. Status code 500: Internal server error")
 		} else {
