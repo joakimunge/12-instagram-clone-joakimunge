@@ -3,17 +3,13 @@ import { connect } from 'react-redux';
 import { GridItem, Loader } from '../components';
 
 import {
-	fetchPosts
+	fetchUser
 } from '../actions';
 
 
 const styles = { display: 'flex'};
 
 class PhotoGrid extends Component {
-
-	componentDidMount() {
-		this.props.dispatch(fetchPosts());
-	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps !== this.props) {
@@ -22,11 +18,15 @@ class PhotoGrid extends Component {
 	}
 
 	render() {
+		console.log(this.props);
+		if (!posts || posts.length === 0) {
+			return <h2 className="App-PhotoGrid__empty">This user hasn't posted anything yet :( </h2>
+		}
 		let {posts} = this.props;
 		let row = [];
 		let postRows = [];
 
-		if (posts.length > 0) {
+		if (posts && posts.length > 0) {
 			posts.map((post, i) => {
 				if (i % 3 === 0 || i === 0) {
 					row = [];
@@ -34,10 +34,6 @@ class PhotoGrid extends Component {
 				}
 				return row.push(post)
 			})
-		}
-
-		if (this.props.isFetching) {
-    	return <Loader />;
 		}
 
 		return(
@@ -58,8 +54,7 @@ class PhotoGrid extends Component {
 }
 
 const mapStateToProps = state => ({
-	posts: state.posts.posts,
-	isFetching: state.posts.isFetching
+	isFetching: state.user.isFetching
 })
 
 export default connect(mapStateToProps)(PhotoGrid);
