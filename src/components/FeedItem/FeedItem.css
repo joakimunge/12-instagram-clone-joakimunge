@@ -91,6 +91,10 @@
 	padding-top:1em;
 	display:flex;
 }
+
+.FeedItem__addcomment form {
+	width:100%;
+}
 .FeedItem__addcomment input {
 	width: 100%;
 	padding:1em;

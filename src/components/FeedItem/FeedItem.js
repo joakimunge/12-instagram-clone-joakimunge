@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Avatar, Like } from '../'
+import { Avatar, Like, Comment, CommentForm, CommentContainer } from '../';
 import './FeedItem.css';
 
 import {
@@ -10,41 +10,21 @@ import {
 
 class FeedItem extends Component {
 
-  constructor() {
-    super();
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.state = {
-        body: ''
-    }
-  }
+  constructor(props) {
+    super(props);
+    this.state = props.photo;
+  } 
 
-  handleSubmit(e) {
-    e.preventDefault();
-
-    let comment = {
-      body: this.state.body, 
-      postId: this.props.photo._id
-    }
-
-    this.props.dispatch(createComment(comment));
-  }
-
-  handleChange(e) {
-    this.setState({
-      body: e.target.value
-    });
-  }
-
-  componentWillUpdate() {
-    if (this.props.isAuthenticated) {
-      return true;
+  componentWillReceiveProps(nextProps) {
+    if (nextProps !== this.state) {
+      console.log(nextProps)
+      this.setState(nextProps);
     }
   }
 
   render() {
-    const {photo} = this.props;
-    console.log(photo)
+    const {photo, isSubmitting} = this.props;
+    console.log(this.state);
     return (
       <article className="FeedItem">
       	<div className="FeedItem__user">
@@ -66,17 +46,8 @@ class FeedItem extends Component {
       			<span className="FeedItem__username">{photo.author}</span>
       			<p>{photo.description}</p>
       		</div>
-      		<div className="FeedItem__comments">
-      			<div className="FeedItem__comment">
-      				<span className="FeedItem__username">axelolsson</span>
-      				<p className="FeedItem__comment__body">Fyfarao vad fint!</p>
-      			</div>
-      		</div>
-      		<div className="FeedItem__addcomment">
-            <form onSubmit={this.handleSubmit}>
-              <input id="body" type="text" value={this.state.body} onChange={this.handleChange} name="body" placeholder="Say something nice!"/>
-            </form>
-      		</div>
+          <CommentContainer {...photo}/>
+      		<CommentForm {...photo} />
       	</div>
       </article>
     );
@@ -84,7 +55,7 @@ class FeedItem extends Component {
 }
 
 const mapStateToProps = state => ({
-
+  isSubmitting: state.comment.isSubmitting
 })
 
 export default connect(mapStateToProps)(FeedItem);
