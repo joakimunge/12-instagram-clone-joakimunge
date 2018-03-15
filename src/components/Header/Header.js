@@ -1,37 +1,49 @@
-import React from 'react';
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import './Header.css';
+import { Button } from '../'
+import { default as Usernav } from './Header_Usernav.js';
+import { Search } from './Header_Search.js';
 import logo from '../../aperture.svg';
-import explore from '../../binoculars.svg';
-import user from '../../user.svg';
-import notification from '../../notification.svg';
+
+class Header extends Component {
 
 
 
-const Header = () => {
-	return (
-		<header className="App-header">
-			<nav className="App-header__nav">
-				<div className="App-header__logo">
-					<Link to="/">
-						<img src={logo} className="App-logo" alt="logo" width="36px"/>
-					</Link>
-						<h3>Aperture</h3>
-				</div>
-				<div className="App-header__search">
-					<input className="App-header__searchfield" placeholder="Search"/>
-				</div>
-				<div className="App-header__navigation">
-					<ul>
-						<li><Link to="/explore"><img src={explore} className="App-explore" alt="explore" width="36px"/></Link></li>
-						<li><img src={notification} className="App-notification" alt="notifications" width="36px"/></li>
-						<li><Link to="/users/manchildman"><img src={user} className="App-user" alt="my profile" width="36px"/></Link></li>
-					</ul>
-				</div>
-			</nav>
-		</header>
-	)
+	render() {
+		const {isAuthenticated, user} = this.props.auth;
+		return (
+			<header className="App-header">
+				<nav className="App-header__nav">
+					<div className="App-header__logo">
+						<Link to="/">
+							<img src={logo} className="App-logo" alt="logo" width="36px"/>
+						</Link>
+							<h3>Aperture</h3>
+					</div>
+					{
+						isAuthenticated
+						?
+						<div className="App-header__usernav">
+							<Search />
+							<Usernav {...user}/>
+						</div>
+						:
+						<div className="App-header__login">
+							<Link to="/signup" ><Button link='/signup' text="Sign up" style="primary" /></Link>
+							<Link to="/signin" ><Button link='/signin' text="Log in" style="secondary" /></Link>
+						</div>
+					}
+				</nav>
+			</header>
+		)
+	}
 }
 
-export default Header;
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps)(Header);
