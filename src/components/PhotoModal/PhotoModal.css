@@ -8,6 +8,19 @@
   padding-top:120px;
 }
 
+.Modal__close {
+  position: absolute;
+  right:25px;
+  top:25px;
+  color: #FFF;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.Modal__close:hover {
+  color: #FF6B6B;
+}
+
 .Modal {
   background-color: #fff;
   max-width: 960px;
