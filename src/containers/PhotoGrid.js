@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { GridItem, Loader } from '../components';
 
 import {
-	fetchPhotos
+	fetchPosts
 } from '../actions';
 
 
@@ -12,7 +12,7 @@ const styles = { display: 'flex'};
 class PhotoGrid extends Component {
 
 	componentDidMount() {
-		this.props.dispatch(fetchPhotos());
+		this.props.dispatch(fetchPosts());
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -22,17 +22,17 @@ class PhotoGrid extends Component {
 	}
 
 	render() {
-		let {photos} = this.props;
+		let {posts} = this.props;
 		let row = [];
-		let photoRows = [];
+		let postRows = [];
 
-		if (photos.length > 0) {
-			photos.map((photo, i) => {
+		if (posts.length > 0) {
+			posts.map((post, i) => {
 				if (i % 3 === 0 || i === 0) {
 					row = [];
-					photoRows.push(row);
+					postRows.push(row);
 				}
-				return row.push(photo)
+				return row.push(post)
 			})
 		}
 
@@ -43,10 +43,10 @@ class PhotoGrid extends Component {
 		return(
 			<section className="App-PhotoGrid">
 			{
-				photoRows.map((row, key) => {
+				postRows.map((row, key) => {
 					return(
 					<div key={key} style={styles} className="App-PhotoGrid__row">
-						{ row.map((photo) => <GridItem key={photo._id} {...photo} />) }
+						{ row.map((post) => <GridItem key={post._id} {...post} />) }
 					</div>
 					)
 				})
@@ -58,8 +58,8 @@ class PhotoGrid extends Component {
 }
 
 const mapStateToProps = state => ({
-	photos: state.root.photos,
-	isFetching: state.root.isFetching
+	posts: state.posts.posts,
+	isFetching: state.posts.isFetching
 })
 
 export default connect(mapStateToProps)(PhotoGrid);

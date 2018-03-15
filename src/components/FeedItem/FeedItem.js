@@ -12,7 +12,7 @@ class FeedItem extends Component {
 
   constructor(props) {
     super(props);
-    this.state = props.photo;
+    this.state = props.post;
   } 
 
   componentWillReceiveProps(nextProps) {
@@ -23,31 +23,31 @@ class FeedItem extends Component {
   }
 
   render() {
-    const {photo, isSubmitting} = this.props;
+    const {post, isSubmitting} = this.props;
     console.log(this.state);
     return (
       <article className="FeedItem">
       	<div className="FeedItem__user">
       		<Avatar />
-      		<Link to={`/users/${photo.author}`} ><span className="FeedItem__username">{photo.author}</span></Link>
+      		<Link to={`/users/${post.author}`} ><span className="FeedItem__username">{post.author}</span></Link>
       	</div>
       	<div className="FeedItem__image">
-      		<img src={photo.image} alt="Feeditem" />
+      		<img src={post.image} alt="Feeditem" />
       	</div>
       	<div className="FeedItem__social">
       		<div className="FeedItem__interactions">
       			<ul>
-      				<Like {...photo}/>
+      				<Like {...post}/>
       				<li><i className="far fa-comment"></i></li>
-      				<li>{photo.likes.length} Likes</li>
+      				<li>{post.likes.length} Likes</li>
       			</ul>
       		</div>
       		<div className="FeedItem__description">
-      			<span className="FeedItem__username">{photo.author}</span>
-      			<p>{photo.description}</p>
+      			<span className="FeedItem__username">{post.author}</span>
+      			<p>{post.description}</p>
       		</div>
-          <CommentContainer {...photo}/>
-      		<CommentForm {...photo} />
+          <CommentContainer {...post}/>
+      		<CommentForm {...post} />
       	</div>
       </article>
     );
