@@ -1,0 +1,37 @@
+.button {
+	padding:0.6em 1em;
+	font-weight: bold;
+	margin-right: 0.4em;
+	color: #FFF;
+	background-color: #00aaff;
+	border:none;
+	border-radius: 2px;
+	font-family: inherit;
+	cursor: pointer;
+}
+
+.button:focus {
+	outline: none;
+}
+
+.button:last-child {
+	margin-right: 0;
+}
+
+.button-primary:hover {
+	background-color: #00cbff;
+}
+
+
+.button-primary:active {
+	background-color: #89e7ff;
+}
+
+.button-secondary {
+	background: #fff;
+	color: #00aaff;
+}
+
+.button-secondary:hover {
+	color: #00cbff;
+}
