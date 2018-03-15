@@ -3,7 +3,6 @@
 	color:#1A1C1C;
 	display:flex;
 	flex-direction: column;
-	min-width: 640px;
 	max-width: 640px;
 	border-radius: 2px;
 	border: 1px solid #D8D8D8;
@@ -116,4 +115,12 @@
 
 .FeedItem__addcomment input:focus {
 	outline: none;
+}
+
+
+@media (max-width: 640px) {
+	.FeedItem {
+		border-radius:0px;
+		border: none;
+	}
 }
