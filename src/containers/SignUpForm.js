@@ -1,4 +1,12 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { FeedItem, Loader, Button } from '../components';
+import logo from '../aperture.svg';
+
+import {
+	loginUser
+} from '../actions';
 
 class SignUpForm extends Component {
 
@@ -37,17 +45,14 @@ class SignUpForm extends Component {
 
 	render() {
 		return(
-			<section className="App-signup">
-				<h2 className="App-signup">This is sign up</h2>
-				<form onSubmit={this.handleSubmit}>
-					<label>Name</label>
+			<section className="App-signup form-wrapper">
+				<h2 className="App-signup">Sign up!</h2>
+				<form className="form-control" onSubmit={this.handleSubmit}>
 					<input id="name" type="text" value={this.state.name} onChange={this.handleChange} placeholder="Name" />
-					<label>E-mail</label>
+					<input id="username" type="text" value={this.state.name} onChange={this.handleChange} placeholder="Username" />
 					<input id="email" value={this.state.email} onChange={this.handleChange} type="text" name="email" placeholder="E-mail" />
-
-					<label>Password</label>
-					<input id="password" value={this.state.password} onChange={this.handleChange} type="password" name="password" placeholder="E-mail" />
-					<button type="submit">SUBMIT</button>
+					<input id="password" value={this.state.password} onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+					<Button style="primary" text="Submit" type="submit" />
 				</form>
 			</section>
 		)
