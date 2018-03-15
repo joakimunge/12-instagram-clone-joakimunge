@@ -79,8 +79,7 @@ export const logoutSuccess = () => {
 export const logoutFailure = () => {
 	return {
 		type: LOGOUT_FAILURE,
-		isFetching: false,
-		isAuthenticated: false
+		isFetching: false
 	}
 }
 
