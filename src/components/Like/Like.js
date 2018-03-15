@@ -12,27 +12,20 @@ class Like extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentWillUpdate() {
-    if (this.props.toggle) {
-      return true;
-    }
-  }
-
   handleClick(e) {
   	let like = {
   		postId: this.props._id
   	}
-  	console.log(like)
   	this.props.dispatch(createLike(like))
   }
 
 	render() {
-		return <li onClick={this.handleClick} className="App-Like"><i className="far fa-heart"></i></li>; 
+		return <li onClick={this.handleClick} className="App-Like"><i className="far fa-heart"></i></li>;
 	}
 }
 
 const mapStateToProps = state => ({
-	toggle: false
+	toggle: state.like.toggle
 })
 
 export default connect(mapStateToProps)(Like);
