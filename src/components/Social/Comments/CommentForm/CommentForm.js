@@ -56,7 +56,8 @@ class CommentForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  isSubmitting: false
+  isSubmitting: false,
+  auth: state.auth
 })
 
 export default connect(mapStateToProps)(CommentForm);
