@@ -10,7 +10,6 @@ export const reducers = combineReducers({
 	auth: authReducer,
 	posts: postsReducer,
 	like: likeReducer,
-	comment: commentReducer,
 	user: userReducer
 })
 
