@@ -15,6 +15,7 @@ class App extends Component {
 						<Route exact path="/" component={requireAuth(Home)} />
 						<Route exact path="/users/:username" component={requireAuth(Profile)} />
 						<Route exact path="/posts/:post" component={requireAuth(PhotoModal)} />
+						<Route exact path="/photo/:photoid" component={PhotoModal} />
 						<Route exact path="/upload" component={Upload} />
 						<Route exact path="/signup" component={SignUp} />
 						<Route exact path="/signin" component={SignIn} />
