@@ -20,12 +20,13 @@ class CommentForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
     let comment = {
-      body: this.state.body, 
-      postId: this.props._id
-    }
+      body: this.state.body,
+      author: this.props.auth.user._id,
+      username: this.props.auth.user.username, 
+      postId: this.props._id,
 
+    }
     this.props.dispatch(createComment(comment));
     this.setState({
       body: ''
