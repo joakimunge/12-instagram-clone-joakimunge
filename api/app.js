@@ -1,5 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
+var multer  = require('multer');
+var upload = multer({ dest: 'uploads/posts/' })
 var db = require('./db');
 var app = express();
 
