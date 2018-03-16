@@ -35,7 +35,7 @@ a:hover {
 	min-width: 300px;
 }
 
-.form-control input {
+.form-control input[type=text] {
 	padding:1.0em 0.6em;
 	border-radius: 4px;
 	border:1px solid #d8d8d8;
