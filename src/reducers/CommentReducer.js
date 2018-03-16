@@ -10,12 +10,12 @@ const initialState = {
 
 export const commentReducer = (state = initialState, action) => {
 	switch(action.type) {
-		case CREATE_COMMENT_REQUEST:
+		/*case CREATE_COMMENT_REQUEST:
 			return Object.assign({}, state, {
 				payload: action.payload,
 				isSubmitting: true
 			})
-
+*/
 		case CREATE_COMMENT_SUCCESS:
 			return Object.assign({}, state, {
 				isSubmitting: false,
