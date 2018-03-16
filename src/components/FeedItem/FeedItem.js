@@ -12,19 +12,10 @@ class FeedItem extends Component {
 
   constructor(props) {
     super(props);
-    this.state = props.post;
   } 
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps !== this.state) {
-      console.log(nextProps)
-      this.setState(nextProps);
-    }
-  }
 
   render() {
     const {post, isSubmitting} = this.props;
-    console.log(this.state);
     return (
       <article className="FeedItem">
       	<div className="FeedItem__user">
@@ -55,7 +46,7 @@ class FeedItem extends Component {
 }
 
 const mapStateToProps = state => ({
-  isSubmitting: state.comment.isSubmitting
+  isSubmitting: false
 })
 
 export default connect(mapStateToProps)(FeedItem);

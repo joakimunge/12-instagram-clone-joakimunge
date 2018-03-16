@@ -12,7 +12,7 @@ router.use(bodyParser.urlencoded({
 router.use(bodyParser.json());
 
 router.post('/', VerifyToken, function(req, res) {
-  Post.findByIdAndUpdate(req.body.postId, req.userId, function(error, post) {
+  Post.findByIdAndUpdate(req.body.postId, req.userId, { new: true }, function(error, post) {
     if (error) return res.status(500).send({ auth: true, error: error.message });
 
     var userHasLiked = post.likes.indexOf(req.userId)
@@ -25,7 +25,7 @@ router.post('/', VerifyToken, function(req, res) {
 
     post.save();
   }).then(function(post) {
-    User.findById(req.userId, function(error, user) {
+    User.findByIdAndUpdate(req.userId, { new: true }, function(error, user) {
       if (error) return res.status(500).send({ auth: true, error: error.message });
 
       var userHasLiked = user.likes.indexOf(req.body.postId)

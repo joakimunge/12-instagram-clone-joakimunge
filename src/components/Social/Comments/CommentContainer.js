@@ -18,8 +18,4 @@ class CommentContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  
-})
-
-export default connect(mapStateToProps)(CommentContainer);
+export default CommentContainer;

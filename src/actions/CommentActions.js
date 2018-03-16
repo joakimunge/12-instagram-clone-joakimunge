@@ -22,7 +22,7 @@ export const commentFailure = (comment) => ({
 });
 
 export const createComment = (comment) => dispatch => {
-	dispatch(requestComment());
+	dispatch(requestComment(comment));
 
 	const options = {
 		method: 'POST',
