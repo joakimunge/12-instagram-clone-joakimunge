@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ImageUploader from 'react-image-upload';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -47,13 +46,6 @@ class SignUpForm extends Component {
 			<section className="App-signup form-wrapper">
 				<h2 className="App-signup">Upload new post!</h2>
 				<form className="form-control" onSubmit={this.handleSubmit} enctype="multipart/form-data">
-					 <ImageUploader
-                withIcon={true}
-                buttonText='Choose images'
-                onChange={this.onDrop}
-                imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                maxFileSize={5242880}
-            />	
 					<input id="image" type="file" placeholder="Image" accept="image/*" />
 					<input id="description" type="text" value={this.state.name} onChange={this.handleChange} placeholder="Say something about your image.." />
 					<Button style="primary" text="Submit" type="submit" />
