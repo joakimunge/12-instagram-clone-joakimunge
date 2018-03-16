@@ -24,7 +24,7 @@ router.post('/', VerifyToken, function(req, res) {
 
       if (error) return res.status(500).send({auth: true, error: error.message})
 
-      Post.findByIdAndUpdate(req.body.postId, { $push: { comments: comment } }, function(error, post) {
+      Post.findByIdAndUpdate(req.body.postId, {$push: { comments: comment }}, { new: true }, function(error, post) {
         if (error) return res.status(500).send({auth: true, error: error.message})
         
         return res.status(200).send({ auth: true, post: post });
