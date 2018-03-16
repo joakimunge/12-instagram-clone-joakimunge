@@ -26,10 +26,10 @@ class Header extends Component {
 					{
 						isAuthenticated
 						?
-						<div className="App-header__usernav">
+						<React.Fragment>
 							<Search />
 							<Usernav {...user}/>
-						</div>
+						</React.Fragment>
 						:
 						<div className="App-header__login">
 							<Link to="/signup" ><Button link='/signup' text="Sign up" style="primary" /></Link>
