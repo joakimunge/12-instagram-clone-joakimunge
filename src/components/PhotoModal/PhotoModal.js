@@ -28,7 +28,7 @@ class PhotoModal extends Component {
             <div className="FeedItem__social">
           <div className="FeedItem__interactions">
             <ul>
-              <Like {...this.props} />
+              <Like {...this.props} source="modal" />
               <li><i className="far fa-comment"></i></li>
               <li>{this.props.likes.length} Likes</li>
             </ul>
@@ -38,7 +38,7 @@ class PhotoModal extends Component {
             <p>{this.props.description}</p>
           </div>
           <CommentContainer {...this.props}/>
-          <CommentForm {...this.props} />
+          <CommentForm {...this.props} source="modal" />
         </div>
           </div>
         </div>

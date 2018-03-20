@@ -1,13 +1,19 @@
 import {
 	CREATE_COMMENT_REQUEST,
 	CREATE_COMMENT_SUCCESS,
-	CREATE_COMMENT_FAILURE
+	CREATE_COMMENT_FAILURE,
+	CREATE_COMMENT_MODAL_REQUEST
 } from '../constants';
 
 const commentsUrl = `/comments/`;
 
 export const requestComment = (comment) => ({
 	type: CREATE_COMMENT_REQUEST,
+	payload: comment
+});
+
+export const requestCommentModal = (comment) => ({
+	type: CREATE_COMMENT_MODAL_REQUEST,
 	payload: comment
 });
 
@@ -22,7 +28,12 @@ export const commentFailure = (comment) => ({
 });
 
 export const createComment = (comment) => dispatch => {
-	dispatch(requestComment(comment));
+
+	if (comment.source === 'modal') {
+		dispatch(requestCommentModal(comment))
+	} else {
+		dispatch(requestComment(comment));
+	}
 
 	const options = {
 		method: 'POST',

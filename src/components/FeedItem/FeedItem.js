@@ -20,7 +20,7 @@ class FeedItem extends Component {
       	<div className="FeedItem__social">
       		<div className="FeedItem__interactions">
       			<ul>
-      				<Like {...post}/>
+      				<Like {...post} source="feed" />
       				<li><i className="far fa-comment"></i></li>
       				<li>{post.likes.length} Likes</li>
       			</ul>
@@ -30,7 +30,7 @@ class FeedItem extends Component {
       			<p>{post.description}</p>
       		</div>
           <CommentContainer {...post}/>
-      		<CommentForm {...post} />
+      		<CommentForm {...post} source="feed" />
       	</div>
       </article>
     );

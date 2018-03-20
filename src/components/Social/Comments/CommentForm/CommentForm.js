@@ -24,6 +24,7 @@ class CommentForm extends Component {
       author: this.props.auth.user._id,
       username: this.props.auth.user.username, 
       postId: this.props._id,
+      source: this.props.source
 
     }
     this.props.dispatch(createComment(comment));
@@ -47,9 +48,9 @@ class CommentForm extends Component {
   render() {
     return (
   		<div className="FeedItem__addcomment">
-        <form onSubmit={this.handleSubmit} class="comment__form">
-          <input id="body" type="text" value={this.state.body} onChange={this.handleChange} name="body" placeholder="Say something nice!"/>
-          <span onClick={this.handleSubmit} className="comment__submit"><i class="far fa-paper-plane"></i></span>
+        <form onSubmit={this.handleSubmit} className="comment__form">
+          <input id="body" type="text" value={this.state.body} onChange={this.handleChange} name="body" placeholder="Say something nice!" required/>
+          <span onClick={this.handleSubmit} className="comment__submit"><i className="far fa-paper-plane"></i></span>
         </form>
   		</div>
     );

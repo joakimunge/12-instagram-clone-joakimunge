@@ -2,8 +2,8 @@ import {
 	FETCH_USER_REQUEST,
 	FETCH_USER_SUCCESS,
 	FETCH_USER_FAILURE,
-	CREATE_LIKE_REQUEST,
-	CREATE_COMMENT_REQUEST
+	CREATE_COMMENT_MODAL_REQUEST,
+	CREATE_LIKE_MODAL_REQUEST
 } from '../constants';
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
 
 const modalReducer = (state = {}, action) => {
   switch (action.type) {
-    case CREATE_COMMENT_REQUEST:
+    case CREATE_COMMENT_MODAL_REQUEST:
 
       if (state._id === action.payload.postId) {
         return { ...state,
@@ -25,7 +25,7 @@ const modalReducer = (state = {}, action) => {
       }
       return state
 
-    case CREATE_LIKE_REQUEST:
+    case CREATE_LIKE_MODAL_REQUEST:
       if (state._id === action.payload.postId) {
         const userHasLiked = state.likes.indexOf(action.payload.userId)
         if (userHasLiked === -1) {
@@ -75,7 +75,7 @@ export const userReducer = (state = initialState, action) => {
 				success: false
 			})
 
-		case CREATE_COMMENT_REQUEST:
+		case CREATE_COMMENT_MODAL_REQUEST:
       return { ...state,
         user: {
         	...state.user,
@@ -83,7 +83,7 @@ export const userReducer = (state = initialState, action) => {
         } 
       }
 
-    case CREATE_LIKE_REQUEST:
+    case CREATE_LIKE_MODAL_REQUEST:
       return { ...state,
         user: {
         	...state.user,

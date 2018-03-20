@@ -1,13 +1,20 @@
 import {
 	CREATE_LIKE_REQUEST,
 	CREATE_LIKE_SUCCESS,
-	CREATE_LIKE_FAILURE
+	CREATE_LIKE_FAILURE,
+	CREATE_LIKE_MODAL_REQUEST,
 } from '../constants';
 
 const likesUrl = `/likes/`;
 
 export const requestLike = (like) => ({
 	type: CREATE_LIKE_REQUEST,
+	toggle: false,
+	payload: like
+});
+
+export const requestLikeModal = (like) => ({
+	type: CREATE_LIKE_MODAL_REQUEST,
 	toggle: false,
 	payload: like
 });
@@ -24,7 +31,12 @@ export const likeFailure = () => ({
 });
 
 export const createLike = (like) => dispatch => {
-	dispatch(requestLike(like));
+
+	if (like.source === 'modal') {
+		dispatch(requestLikeModal(like))
+	} else {
+		dispatch(requestLike(like));
+	}
 
 	const options = {
 		method: 'POST',

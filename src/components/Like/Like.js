@@ -15,7 +15,8 @@ class Like extends Component {
   handleClick(e) {
   	let like = {
   		postId: this.props._id,
-      userId: this.props.user._id
+      userId: this.props.user._id,
+      source: this.props.source
   	}
   	this.props.dispatch(createLike(like))
   }
