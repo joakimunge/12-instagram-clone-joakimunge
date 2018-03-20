@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var User = require ('../models/User');
+var Post = require ('../models/Post');
 
 router.use(bodyParser.urlencoded({
 	extended: true
@@ -20,11 +21,16 @@ router.get('/', function(req, res) {
 
 router.get('/:username', function(req, res) {
 	User.findOne({ username: req.params.username }, {password: 0}, function(error, user) {
-		if (error) {
-			return res.status(500).send("An error occurred while getting user info. Status code 500: Internal server error")
-		} else {
-			return res.status(200).send(user);	
-		}
+		if (error) return res.status(500).send("An error occurred while getting user info. Status code 500: Internal server error")
+
+		if (!user) return res.status(500).send("Could not find user");
+
+		Post.find()
+			.where('_id')
+			.in(user.posts)
+			.exec(function(error, posts) {
+				res.send({auth: true, user: user, posts: posts});
+			})
 	})
 })
 
