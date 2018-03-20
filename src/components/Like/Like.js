@@ -7,8 +7,8 @@ import {
 } from '../../actions';
 
 class Like extends Component {
-	 constructor() {
-    super();
+	 constructor(props) {
+    super(props);
     this.handleClick = this.handleClick.bind(this);
   }
 

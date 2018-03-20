@@ -11,6 +11,10 @@ const styles = { display: 'flex'};
 
 class PhotoGrid extends Component {
 
+	constructor(props) {
+		super(props);
+	}
+
 	componentWillReceiveProps(nextProps) {
 		if (nextProps !== this.props) {
 			return true;
@@ -18,11 +22,11 @@ class PhotoGrid extends Component {
 	}
 
 	render() {
-		console.log(this.props);
+		let {posts} = this.props;
+
 		if (!posts || posts.length === 0) {
 			return <h2 className="App-PhotoGrid__empty">This user hasn't posted anything yet :( </h2>
 		}
-		let {posts} = this.props;
 		let row = [];
 		let postRows = [];
 

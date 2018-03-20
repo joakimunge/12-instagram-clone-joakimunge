@@ -21,7 +21,7 @@ class UserHero extends Component {
 				</div>
 				<div className="UserHero__info">
 					<h3>{user.username}</h3>
-					<p><strong>{user.name}</strong>{user.description}</p>
+					<p>{user.description}</p>
 				</div>
 			</section>
 		)
