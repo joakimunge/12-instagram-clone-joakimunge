@@ -1,8 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
-var multer  = require('multer');
-var upload = multer({ dest: 'uploads/posts/' })
 var db = require('./db');
+var path   = require('path')
 var app = express();
 
 var UserController = require('./controllers/UserController');
@@ -13,11 +12,12 @@ var CommentController = require('./controllers/CommentController');
 var Seeder = require('./controllers/Seeder');
 
 app.use(morgan('dev'));
+app.use('/static', express.static(path.join(__dirname, '/uploads')));
+// app.use(express.static('uploads'))
 app.use('/users', UserController);
 app.use('/comments', CommentController);
 app.use('/likes', LikeController);
 app.use('/auth', AuthController);
 app.use('/posts', PostController);
 app.use('/seed', Seeder);
-
 module.exports = app;
