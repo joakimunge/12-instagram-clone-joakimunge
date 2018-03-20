@@ -1,5 +1,10 @@
 ## Quick Start
 
+Rename .env.local 
+```
+/api/.env.local > /api.env
+```
+
 **Run react dev server**
 
 ```bash
