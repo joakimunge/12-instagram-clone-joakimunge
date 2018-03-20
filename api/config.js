@@ -1,6 +1,8 @@
+require('dotenv').config();
+
 module.exports = {
 
-    'secret': 'manchildmanisahero',
-    'database': 'mongodb://admin:admin@ds121088.mlab.com:21088/chasgram'
+    'secret': `${process.env.SECRET}`,
+    'database': `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_SERVER}`
 
 };
