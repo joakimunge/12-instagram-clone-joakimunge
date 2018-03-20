@@ -1,0 +1,15 @@
+.comment__form {
+	display:flex;
+	align-items: center;
+}
+
+.comment__submit {
+	font-size: 20px;
+	margin-right: 10px;
+	color: #d8d8d8;
+	cursor: pointer;
+}
+
+.comment__submit:hover {
+	color:#00cbff;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './CommentForm.css';
 
 import {
   createComment
@@ -46,8 +47,9 @@ class CommentForm extends Component {
   render() {
     return (
   		<div className="FeedItem__addcomment">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} class="comment__form">
           <input id="body" type="text" value={this.state.body} onChange={this.handleChange} name="body" placeholder="Say something nice!"/>
+          <span onClick={this.handleSubmit} className="comment__submit"><i class="far fa-paper-plane"></i></span>
         </form>
   		</div>
     );
