@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './Dropdown.css';
@@ -17,9 +17,11 @@ class Dropdown extends Component {
 
   handleLogout() {
     this.props.dispatch(logoutUser());
+    this.props.history.push('/')
   }
 
   render() {
+    console.log(this.props)
     if(!this.props.show) {
       return null;
     }
@@ -32,7 +34,7 @@ class Dropdown extends Component {
       <React.Fragment>
         <div className="App-Dropdown">
           <ul className="Dropdown__options">
-            <li><Link to={`/users/${this.props.user.username}`}>My Profile</Link></li>
+            <Link to={`/users/${this.props.user.username}`}><li>My Profile</li></Link>
             <li onClick={this.handleLogout}>Logout</li>
           </ul>
         </div>
@@ -51,4 +53,4 @@ const mapStateToProps = state => ({
   user: state.auth.user
 })
 
-export default connect(mapStateToProps)(Dropdown);
+export default withRouter(connect(mapStateToProps)(Dropdown));

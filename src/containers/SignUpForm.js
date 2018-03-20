@@ -30,6 +30,12 @@ class SignUpForm extends Component {
 	}
 
 	render() {
+		
+		const {isFetching, isAuthenticated} = this.props;
+		if (isAuthenticated) {
+			return <Redirect to="/" />
+		}
+
 		return(
 			<section className="App-signup form-wrapper">
 				<h2 className="App-signup">Sign up!</h2>
@@ -46,7 +52,8 @@ class SignUpForm extends Component {
 }
 
 const mapStateToProps = state => ({
-
+	isFetching: state.auth.isFetching,
+	isAuthenticated: state.auth.isAuthenticated
 })
 
 export default connect(mapStateToProps)(SignUpForm);

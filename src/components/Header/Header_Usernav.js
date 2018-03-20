@@ -13,7 +13,7 @@ class Usernav extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { isOpen: true }
+		this.state = { isOpen: false }
 	}
 
 	toggleDropdown = () => {
@@ -29,7 +29,6 @@ class Usernav extends Component {
 					<li><Link to="/upload"><img src={photo} className="App-explore" alt="upload" width="36px"/></Link></li>
 					<li><Link to="/explore"><img src={explore} className="App-explore" alt="explore" width="36px"/></Link></li>
 					<li><img src={notification} className="App-notification" alt="notifications" width="36px"/></li>
-					<li><Link to={`/users/${this.props.username}`}><img src={userIcon} className="App-user" alt="my profile" width="36px"/></Link></li>
 					<li onClick={this.toggleDropdown} ><img src={userIcon} className="App-user" alt="my profile" width="36px"/>
 						<Dropdown show={this.state.isOpen}
 		          onClose={this.toggleModal}>

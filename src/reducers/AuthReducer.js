@@ -65,6 +65,26 @@ export const authReducer = (state = initialState, action) => {
 				message: action.message
 			})
 
+		case LOGOUT_REQUEST:
+			return Object.assign({}, state, {
+				isFetching: true,
+				isAuthenticated: false
+			})
+
+		case LOGOUT_SUCCESS:
+			return Object.assign({}, state, {
+				isFetching: false,
+				isAuthenticated: false,
+				message: 'Logout successful!'
+			})
+
+		case LOGOUT_FAILURE:
+			return Object.assign({}, state, {
+				isFetching: false,
+				isAuthenticated: false,
+				message: action.message
+			})
+
 		case TOKEN_REQUEST:
 			return Object.assign({}, state, {
 				isFetching: true,
