@@ -19,8 +19,8 @@ class FeedItem extends Component {
     return (
       <article className="FeedItem">
       	<div className="FeedItem__user">
-      		<Avatar />
-      		<Link to={`/users/${post.author}`} ><span className="FeedItem__username">{post.author}</span></Link>
+      		<Avatar url={post.author.avatar} />
+      		<Link to={`/users/${post.author.username}`} ><span className="FeedItem__username">{post.author.username}</span></Link>
       	</div>
       	<div className="FeedItem__image">
       		<img src={post.image} alt="Feeditem" />
@@ -34,7 +34,7 @@ class FeedItem extends Component {
       			</ul>
       		</div>
       		<div className="FeedItem__description">
-      			<span className="FeedItem__username">{post.author}</span>
+      			<span className="FeedItem__username">{post.author.username}</span>
       			<p>{post.description}</p>
       		</div>
           <CommentContainer {...post}/>
