@@ -117,9 +117,9 @@ export const createPost = (formData) => dispatch => {
 		body: formData
 	};
 
-	const request = new Request('/posts', options);
+	const request = new Request(process.env.REACT_APP_API + '/posts', options);
 
-	return fetch(process.env.REACT_APP_API + request)
+	return fetch(request)
 		.then(res => res.json())
 		.then(post => {
 			dispatch(receiveCreatePost(post))
