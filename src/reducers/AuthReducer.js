@@ -5,6 +5,9 @@ import {
 	LOGOUT_REQUEST,
 	LOGOUT_SUCCESS,
 	LOGOUT_FAILURE,
+	SIGNUP_REQUEST,
+	SIGNUP_SUCCESS,
+	SIGNUP_FAILURE,
 	TOKEN_REQUEST,
 	TOKEN_SUCCESS,
 	TOKEN_FAILURE,
@@ -29,11 +32,33 @@ export const authReducer = (state = initialState, action) => {
 			return Object.assign({}, state, {
 				isFetching: false,
 				isAuthenticated: true,
-				user: action.creds,
+				user: action.user,
 				message: 'Authentication successful!'
 			})
 
 		case LOGIN_FAILURE:
+			return Object.assign({}, state, {
+				isFetching: false,
+				isAuthenticated: false,
+				message: action.message
+			})
+
+		case SIGNUP_REQUEST:
+			return Object.assign({}, state, {
+				isFetching: true,
+				isAuthenticated: false,
+				user: action.creds
+			})
+
+		case SIGNUP_SUCCESS:
+			return Object.assign({}, state, {
+				isFetching: false,
+				isAuthenticated: true,
+				user: action.user,
+				message: 'Authentication successful!'
+			})
+
+		case SIGNUP_FAILURE:
 			return Object.assign({}, state, {
 				isFetching: false,
 				isAuthenticated: false,

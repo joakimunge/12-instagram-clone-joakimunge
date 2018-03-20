@@ -13,6 +13,7 @@ class Comment extends Component {
   }
 
 	render() {
+    console.log(this.props)
     const comment = this.props;
     return <div className="FeedItem__comment">
             <span className="FeedItem__username">{comment.author}</span>

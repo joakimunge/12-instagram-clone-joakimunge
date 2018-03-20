@@ -46,6 +46,7 @@ class CommentForm extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
   		<div className="FeedItem__addcomment">
         <form onSubmit={this.handleSubmit}>

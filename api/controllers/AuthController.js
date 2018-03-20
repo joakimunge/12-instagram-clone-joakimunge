@@ -37,7 +37,7 @@ router.post('/register', function(req, res) {
 					expiresIn: 86400
 				});
 
-				return res.status(200).send({auth: true, token: token});	
+				return res.status(200).send({auth: true, token: token, user: user});	
 			}
 
 		});
@@ -64,7 +64,7 @@ router.post('/login', function(req, res) {
 					expiresIn: 864000
 				});
 
-				return res.status(200).send({auth: true, user: user._id, token: token, })
+				return res.status(200).send({auth: true, user: user, token: token })
 		});
 	});
 });
