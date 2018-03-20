@@ -53,18 +53,4 @@ router.delete('/:id', function(req, res) {
   })
 })
 
-router.put('/:id', function(req, res) {
-  Comment.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(error, comment) {
-    if (error) {
-      return res.status(500).send("An error occurred while trying to update comment. Status code 500: Internal server error")
-    } else {
-      return res.status(200).send("Comment " + comment.name + "was successfully updated. New comment info: ", comment);
-    }
-  })
-})
-
-router.get('/all', VerifyToken, function(req, res) {
-  Comment.find()
-})
-
 module.exports = router;
