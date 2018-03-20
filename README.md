@@ -1,3 +1,9 @@
+## Deployed demo
+
+**ATTENTION**: Deployed version still has minor inconsistencies
+
+http://joakimunge.chas.academy/12/
+
 ## Quick Start
 
 Rename .env.local 
