@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const ErrorMessage = () => {
-	return (
-		<section className="Not">
-			<h2 className="App-error">Sorry, the page you are looking for could not be found..</h2>
-		</section>
-	)
+class ErrorMessage extends Component {
+
+	constructor(props) {
+		super(props)
+	}
+
+	render() {		
+		return (
+			<section className="Not">
+				<h2 className="App-error">{this.props.message}</h2>
+			</section>
+		)
+	}
 }
 
 export default ErrorMessage;
