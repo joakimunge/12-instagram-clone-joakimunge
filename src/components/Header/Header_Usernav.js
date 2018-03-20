@@ -31,7 +31,7 @@ class Usernav extends Component {
 					<li><img src={notification} className="App-notification" alt="notifications" width="36px"/></li>
 					<li><Link to={`/users/${this.props.username}`}><img src={userIcon} className="App-user" alt="my profile" width="36px"/></Link></li>
 					<li onClick={this.toggleDropdown} ><img src={userIcon} className="App-user" alt="my profile" width="36px"/>
-						<Dropdown {...this.props} show={this.state.isOpen}
+						<Dropdown show={this.state.isOpen}
 		          onClose={this.toggleModal}>
 		        </Dropdown>
 					</li>
@@ -42,7 +42,6 @@ class Usernav extends Component {
 }
 
 const mapStateToProps = state => ({
-	user: state.auth.user
 })
 
 export default connect(mapStateToProps)(Usernav);

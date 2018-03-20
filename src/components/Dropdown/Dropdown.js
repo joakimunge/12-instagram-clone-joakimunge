@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-
 import './Dropdown.css';
 import PropTypes from 'prop-types';
 
@@ -25,11 +24,15 @@ class Dropdown extends Component {
       return null;
     }
 
+    if(!this.props.user) {
+      return null;
+    }
+
     return (
       <React.Fragment>
         <div className="App-Dropdown">
           <ul className="Dropdown__options">
-            <li><Link to={`/users/${this.props.username}`}>My Profile</Link></li>
+            <li><Link to={`/users/${this.props.user.username}`}>My Profile</Link></li>
             <li onClick={this.handleLogout}>Logout</li>
           </ul>
         </div>
@@ -45,6 +48,7 @@ Dropdown.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  user: state.auth.user
 })
 
 export default connect(mapStateToProps)(Dropdown);
