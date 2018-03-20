@@ -12,6 +12,12 @@
 	margin-right: 0;
 }
 
+.App-PhotoGrid__image {
+	overflow: hidden;
+	height: 0;
+	padding-bottom:100%;
+}
+
 .App-PhotoGrid__image img {
 	width:100%;
 }

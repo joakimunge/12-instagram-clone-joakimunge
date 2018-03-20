@@ -8,6 +8,7 @@ export { default as GridItem } from './GridItem/GridItem.js';
 export { default as Avatar } from './Avatar/Avatar.js';
 export { default as UserHero } from './UserHero/UserHero.js';
 export { default as PhotoModal } from './PhotoModal/PhotoModal.js';
+export { default as Dropdown } from './Dropdown/Dropdown.js';
 export { default as Loader } from './Loader/Loader.js';
 export { default as Like } from './Like/Like.js';
 export { default as Comment } from './Comment/Comment.js';

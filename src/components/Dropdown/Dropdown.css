@@ -1,0 +1,27 @@
+.App-Dropdown {
+  display:block;
+  position: absolute;
+  margin-left:-40px;
+  z-index:99;
+  width:120px;
+  background-color: #FFF;
+  border: 1px solid #d8d8d8;
+  border-radius: 2px;
+  padding-top:10px;
+  -webkit-box-shadow: -6px 13px 19px -6px rgba(0,0,0,0.23);
+  -moz-box-shadow: -6px 13px 19px -6px rgba(0,0,0,0.23);
+  box-shadow: -6px 13px 19px -6px rgba(0,0,0,0.23);
+  height:auto;
+}
+
+.Dropdown__options {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Dropdown__options li {
+  display:block;
+  height:40px;
+  margin: 0;
+}
