@@ -36,11 +36,9 @@ export const createComment = (comment) => dispatch => {
 	return fetch(commentsUrl, options)
 		.then(res => res.json())
 		.then(comment => {
-			console.log('Successfully posted comment: ', comment);
 			dispatch(commentSuccess(comment));
 		})
 		.catch(error => {
-			console.error('An error occurred: ', error);
 			dispatch(commentFailure(comment))
 		})
 }

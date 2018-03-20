@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { FeedItem, Loader, Button } from '../components';
+import { Button } from '../components';
 
 import {
 	signupUser
@@ -13,7 +13,12 @@ class SignUpForm extends Component {
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
-		this.state = {}
+		this.state = {
+			name: '',
+			username: '',
+			email: '',
+			password: ''
+		}
 	}
 
 	handleSubmit(e) {
@@ -30,8 +35,8 @@ class SignUpForm extends Component {
 	}
 
 	render() {
-		
-		const {isFetching, isAuthenticated} = this.props;
+
+		const {isAuthenticated} = this.props;
 		if (isAuthenticated) {
 			return <Redirect to="/" />
 		}
@@ -44,7 +49,7 @@ class SignUpForm extends Component {
 					<input id="username" type="text" value={this.state.username} onChange={this.handleChange} name="username" placeholder="Username" required />
 					<input id="email" value={this.state.email} onChange={this.handleChange} type="text" name="email" placeholder="E-mail" required />
 					<input id="password" value={this.state.password} onChange={this.handleChange} type="password" name="password" placeholder="Password" required />
-					<Button style="primary" text="Submit" type="submit" />
+					<Button appearance="primary" text="Submit" type="submit" />
 				</form>
 			</section>
 		)

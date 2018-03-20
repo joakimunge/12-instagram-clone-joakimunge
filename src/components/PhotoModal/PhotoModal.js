@@ -7,20 +7,12 @@ import './PhotoModal.css';
 import PropTypes from 'prop-types';
 
 class PhotoModal extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  handleClick(e) {
-
-  }
 
   render() {
     if(!this.props.show) {
       return null;
     }
 
-    console.log(this.props)
     return (
       <div className="Modal__backdrop">
         <span onClick={this.props.onClose} className="Modal__close"><i className="fas fa-times"></i></span>

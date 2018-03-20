@@ -21,7 +21,6 @@ class Dropdown extends Component {
   }
 
   render() {
-    console.log(this.props)
     if(!this.props.show) {
       return null;
     }
@@ -44,7 +43,6 @@ class Dropdown extends Component {
 }
 
 Dropdown.propTypes = {
-  onClose: PropTypes.func.isRequired,
   show: PropTypes.bool,
   children: PropTypes.node
 };

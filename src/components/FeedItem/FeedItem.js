@@ -1,21 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Avatar, Like, Comment, CommentForm, CommentContainer } from '../';
+import { Avatar, Like, CommentForm, CommentContainer } from '../';
 import './FeedItem.css';
-
-import {
-  createComment
-} from '../../actions';
 
 class FeedItem extends Component {
 
-  constructor(props) {
-    super(props);
-  } 
-
   render() {
-    const {post, isSubmitting} = this.props;
+    const {post} = this.props;
     return (
       <article className="FeedItem">
       	<div className="FeedItem__user">
@@ -46,7 +38,6 @@ class FeedItem extends Component {
 }
 
 const mapStateToProps = state => ({
-  isSubmitting: false
 })
 
 export default connect(mapStateToProps)(FeedItem);

@@ -30,7 +30,7 @@ class Profile extends Component {
     return (
       <div className="App-Profile">
       	<UserHero {...user.user} />
-      	<PhotoGrid {...user.user} />
+      	<PhotoGrid {...user} />
       </div>
 		)
 	}

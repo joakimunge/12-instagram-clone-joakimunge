@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { GridItem, Loader } from '../components';
-
-import {
-	fetchUser
-} from '../actions';
+import { GridItem } from '../components';
 
 
 const styles = { display: 'flex'};
 
 class PhotoGrid extends Component {
-
-	constructor(props) {
-		super(props);
-	}
-
+	
 	componentWillReceiveProps(nextProps) {
 		if (nextProps !== this.props) {
 			return true;
@@ -22,7 +14,7 @@ class PhotoGrid extends Component {
 	}
 
 	render() {
-		let {posts} = this.props;
+		let {posts} = this.props.user;
 
 		if (!posts || posts.length === 0) {
 			return <h2 className="App-PhotoGrid__empty">This user hasn't posted anything yet :( </h2>
@@ -58,7 +50,8 @@ class PhotoGrid extends Component {
 }
 
 const mapStateToProps = state => ({
-	isFetching: state.user.isFetching
+	isFetching: state.user.isFetching,
+	test: state.user
 })
 
 export default connect(mapStateToProps)(PhotoGrid);

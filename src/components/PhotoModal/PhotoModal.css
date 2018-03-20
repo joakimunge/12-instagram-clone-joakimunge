@@ -35,6 +35,10 @@
   max-width: 640px;
 }
 
+.PhotoModal__image img {
+  max-width: 640px;
+}
+
 .PhotoModal__content {
 	display:flex;
 	flex-direction: column;

@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import { postsReducer } from './PostReducer';
 import { authReducer } from './AuthReducer';
-import { commentReducer } from './CommentReducer';
 import { userReducer } from './UserReducer';
 
 

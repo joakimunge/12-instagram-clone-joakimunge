@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { FeedItem, Loader, Button } from '../components';
+import { Button } from '../components';
 
 import {
 	loginUser
@@ -36,7 +36,7 @@ class SignInForm extends Component {
 	}
 
 	render() {
-		const {isFetching, isAuthenticated} = this.props;
+		const {isAuthenticated} = this.props;
 		if (isAuthenticated) {
 			return <Redirect to="/" />
 		}
@@ -47,7 +47,7 @@ class SignInForm extends Component {
 				<form className="form-control" onSubmit={this.handleSubmit}>
 					<input id="email" value={this.state.email} onChange={this.handleChange} type="text" name="email" placeholder="E-mail" required />
 					<input id="password" value={this.state.password} onChange={this.handleChange} type="password" name="password" placeholder="Password" required />
-					<Button type="submit" style="primary" text="Log in!" />
+					<Button type="submit" appearance="primary" text="Log in!" />
 				</form>
 			</section>
 		)

@@ -32,8 +32,8 @@ class Header extends Component {
 						</React.Fragment>
 						:
 						<div className="App-header__login">
-							<Link to="/signup" ><Button link='/signup' text="Sign up" style="primary" /></Link>
-							<Link to="/signin" ><Button link='/signin' text="Log in" style="secondary" /></Link>
+							<Link to="/signup" ><Button link='/signup' text="Sign up" appearance="primary" /></Link>
+							<Link to="/signin" ><Button link='/signin' text="Log in" appearance="secondary" /></Link>
 						</div>
 					}
 				</nav>

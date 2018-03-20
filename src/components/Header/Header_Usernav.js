@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown } from '../';
 
-import logo from '../../aperture.svg';
 import explore from '../../binoculars.svg';
 import userIcon from '../../user.svg';
 import notification from '../../notification.svg';

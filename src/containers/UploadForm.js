@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 
 import { Loader, Button } from '../components';
 
-import logo from '../aperture.svg';
-
 import {
 	createPost
 } from '../actions';
@@ -50,7 +48,7 @@ class UploadForm extends Component {
 				<form className="form-control" onSubmit={this.handleSubmit} encType="multipart/form-data">
 					<input name="mediapost" id="image" type="file" placeholder="Image" accept="image/*" required />
 					<textarea name="description" id="description" type="text" value={this.state.name} onChange={this.handleChange} placeholder="Say something about your image.." style={{resize: 'none', height: '140px'}}/>
-					<Button style="primary" text="Submit" type="submit" />
+					<Button appearance="primary" text="Submit" type="submit" />
 				</form>
 			</section>
 		)

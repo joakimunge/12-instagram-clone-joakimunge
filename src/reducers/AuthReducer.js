@@ -10,8 +10,7 @@ import {
 	SIGNUP_FAILURE,
 	TOKEN_REQUEST,
 	TOKEN_SUCCESS,
-	TOKEN_FAILURE,
-	TOKEN_GET
+	TOKEN_FAILURE
 } from '../constants';
 
 const initialState = {

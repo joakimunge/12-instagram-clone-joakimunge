@@ -109,7 +109,6 @@ export const loginUser = (creds) => dispatch => {
 				dispatch(loginFailure(res.message || 'Something went wrong'));
 				return Promise.reject(res)
 			}
-			console.log(res)
 			localStorage.setItem('id', res.user._id);
 			localStorage.setItem('access_token', res.token);
 			dispatch(loginSuccess(res))

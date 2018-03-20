@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Avatar, Like, Comment } from '../../../';
 
 import {
-  createComment,
-  fetchPhotoInfo
+  createComment
 } from '../../../../actions';
 
 class CommentForm extends Component {
@@ -46,7 +44,6 @@ class CommentForm extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
   		<div className="FeedItem__addcomment">
         <form onSubmit={this.handleSubmit}>
