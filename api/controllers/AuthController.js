@@ -24,11 +24,12 @@ router.post('/register', function(req, res) {
 		User.create({
 			name: req.body.name,
 			email: req.body.email,
+			username: req.body.username,
 			password: req.body.password
 		}, function(error, user) {
 
 			if (error) {
-				return res.status(500).send("An error occurred while trying to register user. Status code 500: Internal server error")
+				return res.status(500).send({error: error.message})
 			} 
 			else {
 

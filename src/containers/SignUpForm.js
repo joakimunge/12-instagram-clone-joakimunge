@@ -48,8 +48,8 @@ class SignUpForm extends Component {
 			<section className="App-signup form-wrapper">
 				<h2 className="App-signup">Sign up!</h2>
 				<form className="form-control" onSubmit={this.handleSubmit}>
-					<input id="name" type="text" value={this.state.name} onChange={this.handleChange} placeholder="Name" />
-					<input id="username" type="text" value={this.state.name} onChange={this.handleChange} placeholder="Username" />
+					<input id="name" type="text" value={this.state.name} onChange={this.handleChange} name="name" placeholder="Name" />
+					<input id="username" type="text" value={this.state.username} onChange={this.handleChange} name="username" placeholder="Username" />
 					<input id="email" value={this.state.email} onChange={this.handleChange} type="text" name="email" placeholder="E-mail" />
 					<input id="password" value={this.state.password} onChange={this.handleChange} type="password" name="password" placeholder="Password" />
 					<Button style="primary" text="Submit" type="submit" />

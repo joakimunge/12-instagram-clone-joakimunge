@@ -8,7 +8,6 @@
             "avatar": "https://api.adorable.io/avatars/285/1@1.png",
             "description": "MAAAN CHILD MAAAN",
             "password": "testing123",
-            "posts": [],
             "likes": [],
             "comments": []
 
@@ -20,7 +19,6 @@
             "avatar": "https://api.adorable.io/avatars/285/2@2.png",
             "description": "I'm fucking awesome",
             "password": "testing123",
-            "posts": [],
             "likes": [],
             "comments": []
 
@@ -31,7 +29,6 @@
             "email": "tom@test.com",
             "avatar": "https://api.adorable.io/avatars/285/3@3.png",
             "password": "testing123",
-            "posts": [],
             "likes": [],
             "comments": []
 
@@ -42,7 +39,6 @@
             "email": "axel@test.com",
             "avatar": "https://api.adorable.io/avatars/285/4@4.png",
             "password": "testing123",
-            "posts": [],
             "likes": [],
             "comments": []
         }
@@ -51,28 +47,24 @@
     	"post1": {
     			"image": "https://unsplash.it/640?image=133",
 					"description": "This is post number 1. Awesome!",
-					"author": "manchildman",
 					"likes": [],
 					"comments": []
     	},
     	"post2": {
     			"image": "https://unsplash.it/640image=981",
 					"description": "This is post number 2. Awesome!",
-					"author": "joakimunge",
 					"likes": [],
 					"comments": []
     	},
     	"post3": {
     			"image": "https://unsplash.it/640?image=698",
 					"description": "This is post number 3. Awesome!",
-					"author": "tomekander",
 					"likes": [],
 					"comments": []
     	},
     	"post4": {
     			"image": "https://unsplash.it/640?image=435",
 					"description": "This is post number 4. Awesome!",
-					"author": "axelolsson",
 					"likes": [],
 					"comments": []
     	}

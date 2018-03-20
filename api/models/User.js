@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var bcrypt = require('bcrypt');
+var Schema = mongoose.Schema;
+
 
 var UserSchema = new mongoose.Schema({
 	username: {type: String, required: true, unique: true, minlength: [3, "Username must be at least 3 characters"]},
@@ -9,7 +11,7 @@ var UserSchema = new mongoose.Schema({
 	password: {type: String, required: true, minlength: [8, "Too short password"]},
 	avatar: {type: String, default: 'https://api.adorable.io/avatars/285/4@4.png'},
 	description: {type: String, default: "is on Aperture! But.. why hasn't he written a description? :/"},
-	posts: {type: Array},
+	posts: [{type: Schema.Types.ObjectId, ref: 'Post'}],
 	likes: {type: Array},
 	comments: {type: Array}
 });

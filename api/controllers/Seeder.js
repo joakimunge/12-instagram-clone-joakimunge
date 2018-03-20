@@ -41,20 +41,36 @@ router.get('/', function(req, res) {
 		var joakim = data.users.joakim
 		var tom = data.users.tom
 		var axel = data.users.axel
-		User.create(manchildman);
-		User.create(joakim);
-		User.create(tom);
-		User.create(axel);
+		User.create(manchildman).catch(function(error) {
+			console.log(error)
+		});
+		User.create(joakim).catch(function(error) {
+			console.log(error)
+		});
+		User.create(tom).catch(function(error) {
+			console.log(error)
+		});
+		User.create(axel).catch(function(error) {
+			console.log(error)
+		});
 
 		//Seed posts
 		var post1 = data.posts.post1
 		var post2 = data.posts.post2
 		var post3 = data.posts.post3
 		var post4 = data.posts.post4
-		Post.create(post1)
-		Post.create(post2)
-		Post.create(post3)
-		Post.create(post4)
+		Post.create(post1).catch(function(error) {
+			console.log(error)
+		})
+		Post.create(post2).catch(function(error) {
+			console.log(error)
+		})
+		Post.create(post3).catch(function(error) {
+			console.log(error)
+		})
+		Post.create(post4).catch(function(error) {
+			console.log(error)
+		})
 
 		res.status(200).send("Database seeded")
 })
