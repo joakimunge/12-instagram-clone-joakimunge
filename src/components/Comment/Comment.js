@@ -9,9 +9,6 @@ class Comment extends Component {
   }
 
   handleClick(e) {
-  	let comment = {
-  		commentId: this.props._id
-  	}
   	// this.props.dispatch(deleteComment(comment))
   }
 
