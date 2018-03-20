@@ -45,7 +45,6 @@ export const verifyToken = (token) => dispatch => {
 	return fetch('/auth/verify', options)
 		.then(res => res.json())
 		.then(res => {
-			console.log(res);
 			if (!res._id) {
 				dispatch(tokenFailure('Could not verify token. Please sign in again.'));
 				return Promise.reject(res)

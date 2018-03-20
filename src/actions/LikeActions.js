@@ -38,11 +38,9 @@ export const createLike = (like) => dispatch => {
 	return fetch(likesUrl, options)
 		.then(res => res.json())
 		.then(like => {
-			console.log('Success: ', like);
 			dispatch(likeSuccess(like));
 		})
 		.catch(error => {
-			console.error('An error occurred: ', error);
 			dispatch(likeFailure())
 		})
 }

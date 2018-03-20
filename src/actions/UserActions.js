@@ -34,12 +34,10 @@ export const fetchUser = (user) => dispatch => {
 
 	return fetch(usersUrl + user, options)
 		.then(res => res.json())
-		.then(user => {
-			console.log('Successfully fetched user: ', user);
-			dispatch(userSuccess(user));
+		.then(data => {
+			dispatch(userSuccess(data));
 		})
 		.catch(error => {
-			console.error('An error occurred: ', error);
 			dispatch(userFailure(user))
 		})
 }
