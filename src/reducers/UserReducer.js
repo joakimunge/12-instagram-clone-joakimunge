@@ -5,7 +5,8 @@ import {
 } from '../constants';
 
 const initialState = {
-	isAuthenticated: localStorage.getItem('token') ? true : false
+	isAuthenticated: localStorage.getItem('token') ? true : false,
+	isFetching: true
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -20,13 +21,15 @@ export const userReducer = (state = initialState, action) => {
 			return Object.assign({}, state, {
 				user: action.payload,
 				isFetching: false,
-				message: 'Successfully fetched user!'
+				message: 'Successfully fetched user!',
+				success: true
 			})
 
 		case FETCH_USER_FAILURE:
 			return Object.assign({}, state, {
 				message: action.message,
-				isFetching: false
+				isFetching: false,
+				success: false
 			})
 			
 		default:

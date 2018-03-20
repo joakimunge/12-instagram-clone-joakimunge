@@ -5,17 +5,22 @@ import {
   CREATE_COMMENT_REQUEST,
   CREATE_COMMENT_SUCCESS,
   CREATE_COMMENT_FAILURE,
-  CREATE_LIKE_REQUEST
+  CREATE_LIKE_REQUEST,
+  CREATE_POST_REQUEST,
+  CREATE_POST_SUCCESS,
+  CREATE_POST_FAILURE
 } from '../constants';
 
 const initialState = {
   posts: [],
-  isFetching: false
+  isFetching: false,
+  success: false
 }
 
 const postReducer = (state = {}, action) => {
   switch (action.type) {
     case CREATE_COMMENT_REQUEST:
+
       if (state._id === action.payload.postId) {
         return { ...state,
           comments: [...state.comments, {
@@ -27,6 +32,7 @@ const postReducer = (state = {}, action) => {
       return state
 
     case CREATE_LIKE_REQUEST:
+
       if (state._id === action.payload.postId) {
         const userHasLiked = state.likes.indexOf(action.payload.userId)
         if (userHasLiked === -1) {
@@ -72,6 +78,23 @@ export const postsReducer = (state = initialState, action) => {
         ...state,
         isFetching: false
       }
+    case CREATE_POST_REQUEST:
+      return {
+        ...state,
+        isSubmitting: true
+      }
+    case CREATE_POST_SUCCESS:
+      return {
+        ...state,
+        isSubmitting: false,
+        success: true
+      }
+    case CREATE_POST_FAILURE:
+      return {
+        ...state,
+        isSubmitting: false,
+        success: false
+      }
     case CREATE_COMMENT_REQUEST:
       return { ...state,
         posts: state.posts.map(post => postReducer(post, action))
@@ -81,6 +104,7 @@ export const postsReducer = (state = initialState, action) => {
       return { ...state,
         posts: state.posts.map(post => postReducer(post, action))
       }
+
     default:
       return state;
   }

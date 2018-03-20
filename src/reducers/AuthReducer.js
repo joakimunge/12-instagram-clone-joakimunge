@@ -7,12 +7,13 @@ import {
 	LOGOUT_FAILURE,
 	TOKEN_REQUEST,
 	TOKEN_SUCCESS,
-	TOKEN_FAILURE
+	TOKEN_FAILURE,
+	TOKEN_GET
 } from '../constants';
 
 const initialState = {
 	isFetching: false,
-	isAuthenticated: localStorage.getItem('token') ? true : false
+	isAuthenticated: localStorage.getItem('access_token') ? true : false
 }
 
 export const authReducer = (state = initialState, action) => {
