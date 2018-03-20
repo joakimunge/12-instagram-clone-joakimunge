@@ -1,5 +1,6 @@
 .Modal__backdrop {
   position: fixed;
+  z-index:999;
   top: 0;
   bottom: 0;
   left: 0;
@@ -31,11 +32,13 @@
 
 .PhotoModal__image {
   display:flex;
+  max-width: 640px;
 }
 
 .PhotoModal__content {
 	display:flex;
 	flex-direction: column;
+  width: 100%;
 }
 
 .PhotoModal__user {

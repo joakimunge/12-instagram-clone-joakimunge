@@ -28,6 +28,7 @@ router.get('/:username', function(req, res) {
 		Post.find()
 			.where('_id')
 			.in(user.posts)
+			.populate('author')
 			.exec(function(error, posts) {
 				res.send({auth: true, user: user, posts: posts});
 			})

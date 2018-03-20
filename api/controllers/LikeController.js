@@ -15,6 +15,8 @@ router.post('/', VerifyToken, function(req, res) {
   Post.findByIdAndUpdate(req.body.postId, req.userId, { new: true }, function(error, post) {
     if (error) return res.status(500).send({ auth: true, error: error.message });
 
+    // if (!post) return res.status(500).send({error: 'Something went wrong'})
+
     var userHasLiked = post.likes.indexOf(req.userId)
 
     if (userHasLiked === -1) {
@@ -28,6 +30,8 @@ router.post('/', VerifyToken, function(req, res) {
     User.findByIdAndUpdate(req.userId, { new: true }, function(error, user) {
       if (error) return res.status(500).send({ auth: true, error: error.message });
 
+      // if (!user) return res.status(500).send({error: 'Something went wrong'})
+
       var userHasLiked = user.likes.indexOf(req.body.postId)
 
       if (userHasLiked === -1) {
@@ -40,6 +44,9 @@ router.post('/', VerifyToken, function(req, res) {
       user.save();
       return res.status(200).send({ auth: true, post: post, user: user });
     })
+  })
+  .catch(function(error) {
+    console.log(error);
   })
 })
 

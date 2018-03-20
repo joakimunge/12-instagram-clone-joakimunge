@@ -32,7 +32,6 @@ const postReducer = (state = {}, action) => {
       return state
 
     case CREATE_LIKE_REQUEST:
-
       if (state._id === action.payload.postId) {
         const userHasLiked = state.likes.indexOf(action.payload.userId)
         if (userHasLiked === -1) {

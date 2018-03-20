@@ -23,7 +23,7 @@ class Like extends Component {
 	render() {
     const {toggle} = this.props;
     if (toggle) return <li onClick={this.handleClick} className="App-Like"><i className="far fa-heart"></i></li>;
-		return <li onClick={this.handleClick} className="App-Like liked"><i className="fas fa-heart"></i></li>;
+		return <li onClick={this.handleClick} className="App-Like"><i className="fas fa-heart"></i></li>;
 	}
 }
 

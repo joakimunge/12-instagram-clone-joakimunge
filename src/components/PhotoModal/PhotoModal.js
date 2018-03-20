@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import { Avatar, Like, Comment, CommentForm, CommentContainer } from '../';
+import { connect } from 'react-redux';
+import { Avatar, Like, CommentForm, CommentContainer } from '../';
 
 import './PhotoModal.css';
 import PropTypes from 'prop-types';
@@ -19,6 +20,7 @@ class PhotoModal extends Component {
       return null;
     }
 
+    console.log(this.props)
     return (
       <div className="Modal__backdrop">
         <span onClick={this.props.onClose} className="Modal__close"><i className="fas fa-times"></i></span>
@@ -28,19 +30,19 @@ class PhotoModal extends Component {
           </div>
           <div className="PhotoModal__content">
             <div className="PhotoModal__user">
-              <Avatar />
-              <Link to="#"><span className="PhotoModal__username">{this.props.author}</span></Link>
+              <Avatar url={this.props.author.avatar}/>
+              <Link to={`/users/${this.props.author.username}`}><span className="PhotoModal__username">{this.props.author.username}</span></Link>
             </div>
             <div className="FeedItem__social">
           <div className="FeedItem__interactions">
             <ul>
-              <li><i className="far fa-heart"></i></li>
+              <Like {...this.props} />
               <li><i className="far fa-comment"></i></li>
               <li>{this.props.likes.length} Likes</li>
             </ul>
           </div>
           <div className="FeedItem__description">
-            <span className="FeedItem__username">{this.props.author}</span>
+            <Link to={`/users/${this.props.author.username}`}><span className="FeedItem__username">{this.props.author.username}</span></Link>
             <p>{this.props.description}</p>
           </div>
           <CommentContainer {...this.props}/>
@@ -59,4 +61,7 @@ PhotoModal.propTypes = {
   children: PropTypes.node
 };
 
-export default PhotoModal;
+const mapStateToProps = state => ({
+})
+
+export default connect(mapStateToProps)(PhotoModal);
