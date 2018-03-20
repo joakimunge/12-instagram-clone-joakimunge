@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { PhotoGrid } from '../../containers';
-import { UserHero, Loader } from '../../components';
+import { UserHero, Loader, ErrorMessage } from '../../components';
 
 import {
 	fetchUser
@@ -17,16 +17,20 @@ class Profile extends Component {
 	}
 
 	render() {
-		const {user, isFetching} = this.props;
+		const {user} = this.props;
 
-		if (isFetching) {
+		if (user.success === false) {
+			return <ErrorMessage message="User not found" />
+		}
+
+		if (user.isFetching) {
 			return <Loader />
 		}
 
     return (
       <div className="App-Profile">
-      	<UserHero {...user} />
-      	<PhotoGrid {...user} />
+      	<UserHero {...user.user} />
+      	<PhotoGrid {...user.user} />
       </div>
 		)
 	}
