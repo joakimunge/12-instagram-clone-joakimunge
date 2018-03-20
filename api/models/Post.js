@@ -5,7 +5,8 @@ var PostSchema = new mongoose.Schema({
 	description: {type: String, minlength: [1, "Description can't be empty"]},
 	author: {type: String},
 	likes: {type: Array},
-	comments: {type: Array}
+	comments: {type: Array},
+	date: { type: Date, default: Date.now }
 });
 
 mongoose.model('Post', PostSchema);
