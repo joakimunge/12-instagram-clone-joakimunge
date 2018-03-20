@@ -42,7 +42,7 @@ export const verifyToken = (token) => dispatch => {
 
 	dispatch(requestToken(token));
 
-	return fetch('/auth/verify', options)
+	return fetch(process.env.REACT_APP_API + '/auth/verify', options)
 		.then(res => res.json())
 		.then(res => {
 			if (!res._id) {

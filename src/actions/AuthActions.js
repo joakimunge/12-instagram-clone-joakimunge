@@ -10,7 +10,6 @@ import {
 	SIGNUP_FAILURE
 } from '../constants';
 
-
 // Signup action functions
 export const requestSignup = (creds) => {
 	return {
@@ -49,7 +48,7 @@ export const signupUser = (creds) => dispatch => {
 
 	dispatch(requestSignup(creds));
 
-	return fetch('/auth/register', options)
+	return fetch(process.env.REACT_APP_API + '/auth/register', options)
 		.then(res => res.json())
 		.then(res => {
 			if (!res.auth) {
@@ -102,7 +101,7 @@ export const loginUser = (creds) => dispatch => {
 
 	dispatch(requestLogin(creds));
 
-	return fetch('/auth/login', options)
+	return fetch(process.env.REACT_APP_API + '/auth/login', options)
 		.then(res => res.json())
 		.then(res => {
 			if (!res.auth) {

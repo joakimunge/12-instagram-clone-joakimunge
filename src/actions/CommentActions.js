@@ -44,7 +44,7 @@ export const createComment = (comment) => dispatch => {
 		body: JSON.stringify(comment)
 	}
 
-	return fetch(commentsUrl, options)
+	return fetch(process.env.REACT_APP_API + commentsUrl, options)
 		.then(res => res.json())
 		.then(comment => {
 			dispatch(commentSuccess(comment));

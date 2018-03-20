@@ -47,7 +47,7 @@ export const createLike = (like) => dispatch => {
 		body: JSON.stringify(like)
 	}
 
-	return fetch(likesUrl, options)
+	return fetch(process.env.REACT_APP_API + likesUrl, options)
 		.then(res => res.json())
 		.then(like => {
 			dispatch(likeSuccess(like));

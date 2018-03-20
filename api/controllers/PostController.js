@@ -3,6 +3,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var Post = require('../models/Post');
 var User = require('../models/User');
+var config = require('../config');
 var VerifyToken = require('../middleware/VerifyToken');
 var resizeFile = require('../middleware/FileResize');
 
@@ -26,16 +27,6 @@ var upload = multer({ storage: storage })
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
-// router.get('/all', VerifyToken, function(req, res) {
-//   Post.find({}, null, { sort: '-date' }, function(error, posts) {
-//     if (error) {
-//       return res.status(500).send("Could not fetch posts")
-//     } else {
-//       return res.status(200).send(posts);
-//     }
-//   })
-// })
-
 router.get('/all', VerifyToken, function(req, res) {
   Post.find({}, null, { sort: '-date' })
   	.populate('author', 'username avatar')
@@ -50,7 +41,7 @@ router.post('/', VerifyToken, upload.single('mediapost'), function(req, res) {
   User.findById(req.userId)
     .then(user => {
       Post.create({
-        image: 'http://localhost:3001/static/' + req.file.filename,
+        image: config.host + '/static/' + req.file.filename,
         description: req.body.description,
         author: req.userId,
         author_id: req.userId

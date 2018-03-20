@@ -32,7 +32,7 @@ export const fetchUser = (user) => dispatch => {
 		}
 	}
 
-	return fetch(usersUrl + user, options)
+	return fetch(process.env.REACT_APP_API + usersUrl + user, options)
 		.then(res => res.json())
 		.then(data => {
 			dispatch(userSuccess(data));
