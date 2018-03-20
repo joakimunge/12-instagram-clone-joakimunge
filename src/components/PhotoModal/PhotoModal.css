@@ -32,11 +32,12 @@
 
 .PhotoModal__image {
   display:flex;
-  max-width: 640px;
+  height:640px;
+  width: 640px;
 }
 
 .PhotoModal__image img {
-  max-width: 640px;
+  width: 640px;
 }
 
 .PhotoModal__content {
