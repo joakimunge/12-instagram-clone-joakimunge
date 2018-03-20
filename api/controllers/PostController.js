@@ -26,13 +26,23 @@ var upload = multer({ storage: storage })
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
+// router.get('/all', VerifyToken, function(req, res) {
+//   Post.find({}, null, { sort: '-date' }, function(error, posts) {
+//     if (error) {
+//       return res.status(500).send("Could not fetch posts")
+//     } else {
+//       return res.status(200).send(posts);
+//     }
+//   })
+// })
+
 router.get('/all', VerifyToken, function(req, res) {
-  Post.find({}, null, { sort: '-date' }, function(error, posts) {
-    if (error) {
-      return res.status(500).send("Could not fetch posts")
-    } else {
-      return res.status(200).send(posts);
-    }
+  Post.find({}, null, { sort: '-date' })
+  	.populate('author', 'username avatar')
+  	.exec(function(err, posts) {
+  	if (err) return res.status(500).send({error: err.message});
+
+  	return res.status(200).send(posts)
   })
 })
 
@@ -42,7 +52,7 @@ router.post('/', VerifyToken, upload.single('mediapost'), function(req, res) {
       Post.create({
         image: 'http://localhost:3001/static/' + req.file.filename,
         description: req.body.description,
-        author: user.username,
+        author: req.userId,
         author_id: req.userId
       }).
       then(post => {
@@ -53,6 +63,9 @@ router.post('/', VerifyToken, upload.single('mediapost'), function(req, res) {
 
           return res.status(200).send({ auth: true, user: user, post: post });
         })
+      })
+      .catch(error => {
+      	console.log(error)
       })
     })
 })
