@@ -27,8 +27,7 @@ export const signupSuccess = (user) => {
 		isFetching: false,
 		isAuthenticated: true,
 		token: user.token,
-		_id: user.user._id,
-		username: user.user.username
+		user: user.user
 	}
 }
 
@@ -57,7 +56,7 @@ export const signupUser = (creds) => dispatch => {
 				dispatch(signupFailure(res.message || 'Something went wrong'));
 				return Promise.reject(res)
 			}
-			localStorage.setItem('id', res.user);
+			localStorage.setItem('id', res.user._id);
 			localStorage.setItem('access_token', res.token);
 			dispatch(signupSuccess(res))
 		})
@@ -81,8 +80,7 @@ export const loginSuccess = (user) => {
 		isFetching: false,
 		isAuthenticated: true,
 		token: user.token,
-		_id: user.user._id,
-		username: user.user.username
+		user: user.user
 	}
 }
 
@@ -112,7 +110,7 @@ export const loginUser = (creds) => dispatch => {
 				return Promise.reject(res)
 			}
 			console.log(res)
-			localStorage.setItem('id', res.user);
+			localStorage.setItem('id', res.user._id);
 			localStorage.setItem('access_token', res.token);
 			dispatch(loginSuccess(res))
 		})
