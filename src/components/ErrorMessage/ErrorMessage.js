@@ -6,11 +6,18 @@ class ErrorMessage extends Component {
 		super(props)
 	}
 
-	render() {		
+	render() {
 		return (
-			<section className="Not">
-				<h2 className="App-error">{this.props.message}</h2>
-			</section>
+			<React.Fragment>
+				<section className="Not">
+				{ this.props.message
+					?
+					<h2 className="App-error">{this.props.message}</h2>
+					:
+					<h2 className="App-error">Seems to be nothing here :(</h2>
+				}
+				</section>
+			</React.Fragment>
 		)
 	}
 }
