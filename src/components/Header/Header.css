@@ -4,6 +4,7 @@
 	justify-content: center;
 	width:100%;
 	border-bottom: 1px solid #d8d8d8;
+	z-index: 1;
 }
 
 .App-header::before {
@@ -69,7 +70,7 @@
 	-webkit-padding-start:0;
 }
 
-.App-header__nav ul > li {
+.App-header__navigation__list > li {
 	margin-right: 1em;
 }
 
