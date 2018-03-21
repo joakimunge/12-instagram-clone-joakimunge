@@ -1,3 +1,6 @@
+## Todo
+- Implement support for video upload via cloudinary
+
 ## Deployed demo
 
 **ATTENTION**: Deployed version still has minor inconsistencies

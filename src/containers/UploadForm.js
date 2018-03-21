@@ -46,7 +46,7 @@ class UploadForm extends Component {
 			<section className="App-signup form-wrapper">
 				<h2 className="App-signup">Upload new post!</h2>
 				<form className="form-control" onSubmit={this.handleSubmit} encType="multipart/form-data">
-					<input name="mediapost" id="image" type="file" placeholder="Image" accept="image/*" required />
+					<input name="mediapost" id="image" type="file" placeholder="Image" accept="image/*,video/*" capture="camera,camcorder" required />
 					<textarea name="description" id="description" type="text" value={this.state.name} onChange={this.handleChange} placeholder="Say something about your image.." style={{resize: 'none', height: '140px'}}/>
 					<Button appearance="primary" text="Submit" type="submit" />
 				</form>
