@@ -2,7 +2,7 @@
 
 **ATTENTION**: Deployed version still has minor inconsistencies
 
-http://joakimunge.chas.academy/12/
+https://afternoon-savannah-87443.herokuapp.com/
 
 ## Quick Start
 
