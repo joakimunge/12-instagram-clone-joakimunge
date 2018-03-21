@@ -11,6 +11,7 @@
 /build
 /api/uploads/*
 /api/.env
+/api/client
 
 # misc
 .DS_Store
