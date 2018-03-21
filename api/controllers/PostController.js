@@ -4,8 +4,10 @@ var bodyParser = require('body-parser');
 var Post = require('../models/Post');
 var User = require('../models/User');
 var config = require('../config');
+var cloudinary = require('cloudinary');
 var VerifyToken = require('../middleware/VerifyToken');
 var resizeFile = require('../middleware/FileResize');
+require('dotenv').config();
 
 //Multer storage
 var multer = require('multer');
@@ -14,7 +16,7 @@ var mime = require('mime');
 
 var storage = multer.diskStorage({
   destination: function(req, file, callback) {
-    callback(null, './uploads/')
+    callback(null, './uploads')
   },
   filename: function(req, file, callback) {
     crypto.pseudoRandomBytes(16, function(error, raw) {
@@ -29,36 +31,64 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/all', VerifyToken, function(req, res) {
   Post.find({}, null, { sort: '-date' })
-  	.populate('author', 'username avatar')
-  	.exec(function(err, posts) {
-  	if (err) return res.status(500).send({error: err.message});
+    .populate('author', 'username avatar')
+    .exec(function(err, posts) {
+      if (err) return res.status(500).send({ error: err.message });
 
-  	return res.status(200).send(posts)
-  })
+      return res.status(200).send(posts)
+    })
 })
 
-router.post('/', VerifyToken, upload.single('mediapost'), function(req, res) {
-  User.findById(req.userId)
-    .then(user => {
-      Post.create({
-        image: config.host + '/static/' + req.file.filename,
-        description: req.body.description,
-        author: req.userId,
-        author_id: req.userId
-      }).
-      then(post => {
-        User.findByIdAndUpdate(req.userId, { $push: { posts: post._id } }, function(error, user) {
-          if (error) {
-            return res.status(500).send("Could not update user posts array")
-          }
+function uploadFile(file) {
 
-          return res.status(200).send({ auth: true, user: user, post: post });
-        })
+  return new Promise(function(resolve, reject) {
+    if (process.env.NODE_ENV === 'production') {
+
+      cloudinary.config({
+        cloud_name: process.env.CLOUDNAME,
+        api_key: process.env.CLOUD_API_KEY,
+        api_secret: process.env.CLOUD_API_SECRET
+      });
+
+      cloudinary.v2.uploader.upload(file.path, { width: 640 }, function(err, result) {
+        if (err) reject(err)
+
+        resolve(result.secure_url)
       })
-      .catch(error => {
-      	console.log(error)
+    } else {
+      resolve('/api/static/' + file.filename)
+    }
+  });
+
+}
+
+router.post('/', VerifyToken, upload.single('mediapost'), async function(req, res) {
+    let filePath = await uploadFile(req.file);
+    if (!filePath) {
+      return res.status(500).send({error: filePath})
+    }
+    User.findById(req.userId)
+      .then(user => {
+        Post.create({
+          image: filePath,
+          description: req.body.description,
+          author: req.userId,
+          author_id: req.userId
+        }).
+        then(post => {
+            User.findByIdAndUpdate(req.userId, { $push: { posts: post._id } }, function(error, user) {
+              if (error) {
+                return res.status(500).send("Could not update user posts array")
+              }
+
+              return res.status(200).send({ auth: true, user: user, post: post });
+            })
+          })
+          .catch(error => {
+            console.log(error)
+            return res.status(500).send({ message: error.message })
+          })
       })
-    })
 })
 
 router.get('/:id', function(req, res) {
