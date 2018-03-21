@@ -48,7 +48,7 @@ export const signupUser = (creds) => dispatch => {
 
 	dispatch(requestSignup(creds));
 
-	return fetch(process.env.REACT_APP_API + '/auth/register', options)
+	return fetch('/api/auth/register', options)
 		.then(res => res.json())
 		.then(res => {
 			if (!res.auth) {
@@ -101,7 +101,7 @@ export const loginUser = (creds) => dispatch => {
 
 	dispatch(requestLogin(creds));
 
-	return fetch(process.env.REACT_APP_API + '/auth/login', options)
+	return fetch('/api/auth/login', options)
 		.then(res => res.json())
 		.then(res => {
 			if (!res.auth) {

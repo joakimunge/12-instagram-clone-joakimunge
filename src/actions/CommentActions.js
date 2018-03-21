@@ -5,7 +5,7 @@ import {
 	CREATE_COMMENT_MODAL_REQUEST
 } from '../constants';
 
-const commentsUrl = `/comments/`;
+const commentsUrl = `/api/comments/`;
 
 export const requestComment = (comment) => ({
 	type: CREATE_COMMENT_REQUEST,
@@ -44,7 +44,7 @@ export const createComment = (comment) => dispatch => {
 		body: JSON.stringify(comment)
 	}
 
-	return fetch(process.env.REACT_APP_API + commentsUrl, options)
+	return fetch(commentsUrl, options)
 		.then(res => res.json())
 		.then(comment => {
 			dispatch(commentSuccess(comment));

@@ -47,7 +47,7 @@ export const fetchPosts = () => dispatch => {
 		}
 	}
 
-	return fetch(process.env.REACT_APP_API + '/posts/all', options)
+	return fetch('/api/posts/all', options)
 		.then(res => res.json())
 		.then(data => {
 			dispatch(receivePosts(data));
@@ -73,7 +73,7 @@ export const rejectedPostInfo = () => ({
 
 export const fetchPostInfo = (id) => dispatch => {
 	dispatch(requestPostInfo());
-	return fetch(process.env.REACT_APP_API + '/posts/' + id)
+	return fetch('/api/posts/' + id)
 		.then(res => res.json())
 		.then(data => {
 			dispatch(receivePostInfo(data))
@@ -117,7 +117,7 @@ export const createPost = (formData) => dispatch => {
 		body: formData
 	};
 
-	const request = new Request(process.env.REACT_APP_API + '/posts', options);
+	const request = new Request('/api/posts', options);
 
 	return fetch(request)
 		.then(res => res.json())

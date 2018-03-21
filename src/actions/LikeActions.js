@@ -5,7 +5,7 @@ import {
 	CREATE_LIKE_MODAL_REQUEST,
 } from '../constants';
 
-const likesUrl = `/likes/`;
+const likesUrl = `/api/likes/`;
 
 export const requestLike = (like) => ({
 	type: CREATE_LIKE_REQUEST,
@@ -47,7 +47,7 @@ export const createLike = (like) => dispatch => {
 		body: JSON.stringify(like)
 	}
 
-	return fetch(process.env.REACT_APP_API + likesUrl, options)
+	return fetch(likesUrl, options)
 		.then(res => res.json())
 		.then(like => {
 			dispatch(likeSuccess(like));

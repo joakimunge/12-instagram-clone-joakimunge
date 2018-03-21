@@ -4,7 +4,7 @@ import {
 	FETCH_USER_FAILURE
 } from '../constants';
 
-const usersUrl = `/users/`;
+const usersUrl = `/api/users/`;
 
 export const requestUser = (user) => ({
 	type: FETCH_USER_REQUEST,
@@ -32,7 +32,7 @@ export const fetchUser = (user) => dispatch => {
 		}
 	}
 
-	return fetch(process.env.REACT_APP_API + usersUrl + user, options)
+	return fetch(usersUrl + user, options)
 		.then(res => res.json())
 		.then(data => {
 			dispatch(userSuccess(data));
