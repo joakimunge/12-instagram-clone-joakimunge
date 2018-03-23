@@ -40,8 +40,8 @@ router.get('/all', VerifyToken, function(req, res) {
 
 function fileIsAllowed(file) {
   let fileType = 'image';
-  var fileTypes = /jpeg|jpg|png|mp4|wmv|avi|mkv/;
-  var vidTypes = /mp4|wmv|avi|mkv/;
+  var fileTypes = /jpeg|jpg|png|mp4|wmv|avi|mkv|mov/;
+  var vidTypes = /mp4|wmv|avi|mkv|mov/;
   var filetypeAllowed = fileTypes.test(file.mimetype);
   if (vidTypes.test(file.mimetype)) {
     fileType = 'video';
