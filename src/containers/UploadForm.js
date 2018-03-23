@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Loader, Button } from '../components';
@@ -17,10 +17,11 @@ class UploadForm extends Component {
 		this.state = {}
 	}
 
-	handleSubmit(e) {
+	async handleSubmit(e) {
 		e.preventDefault();
 		const formData = new FormData(e.target);
-		this.props.dispatch(createPost(formData));
+		await this.props.dispatch(createPost(formData));
+		this.props.history.push('/')
 	}
 
 	handleChange(e) {
@@ -36,10 +37,6 @@ class UploadForm extends Component {
 
 		if (isSubmitting) {
 			return <Loader />
-		}
-
-		if (success) {
-			return <Redirect to="/" />
 		}
 
 		return(
@@ -60,4 +57,4 @@ const mapStateToProps = state => ({
 	success: state.posts.success
 })
 
-export default connect(mapStateToProps)(UploadForm);
+export default withRouter(connect(mapStateToProps)(UploadForm));
