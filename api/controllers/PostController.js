@@ -40,8 +40,9 @@ router.get('/all', VerifyToken, function(req, res) {
 
 function fileIsAllowed(file) {
   let fileType = 'image';
-  var fileTypes = /jpeg|jpg|png|mp4|wmv|avi|mkv|mov/;
-  var vidTypes = /mp4|wmv|avi|mkv|mov/;
+  console.log(file)
+  var fileTypes = /jpeg|jpg|png|mp4|wmv|avi|mkv|mov|HEVC|HEIF|MOV|quicktime/;
+  var vidTypes = /mp4|wmv|avi|mkv|mov|HEVC|MOV|quicktime/;
   var filetypeAllowed = fileTypes.test(file.mimetype);
   if (vidTypes.test(file.mimetype)) {
     fileType = 'video';
@@ -64,14 +65,6 @@ function uploadFile(file, filetype) {
         api_secret: process.env.CLOUD_API_SECRET
       });
 
-      // if (filetype === 'video') {
-      //   console.log('Uploading video..')
-      //   cloudinary.v2.uploader.upload(file.path, { resource_type: "video"}, function(err, result) {
-      //     if (err) return reject(err)
-
-      //     return resolve(result.secure_url)
-      //   })
-      // }
       console.log('Uploading file: ' + file.path)
       cloudinary.v2.uploader.upload(file.path, { resource_type: "auto", width: 640 }, function(err, result) {
         if (err) return reject(err)
