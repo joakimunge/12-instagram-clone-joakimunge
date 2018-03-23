@@ -35,7 +35,7 @@
 }
 
 /* image area */
-.FeedItem__image img {
+.FeedItem__image img, video {
 	width:100%;
 	cursor: pointer;
 }

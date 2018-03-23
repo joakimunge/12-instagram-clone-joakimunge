@@ -15,7 +15,12 @@ class FeedItem extends Component {
       		<Link to={`/users/${post.author.username}`} ><span className="FeedItem__username">{post.author.username}</span></Link>
       	</div>
       	<div className="FeedItem__image">
+          { post.type === 'image'
+          ?
       		<img src={post.image} alt="Feeditem" />
+          :
+          <video src={post.image} controls loop muted></video>
+          }
       	</div>
       	<div className="FeedItem__social">
       		<div className="FeedItem__interactions">

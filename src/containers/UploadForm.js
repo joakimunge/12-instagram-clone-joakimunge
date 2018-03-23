@@ -33,7 +33,7 @@ class UploadForm extends Component {
 	}
 
 	render() {
-		const {success, isSubmitting} = this.props;
+		const {isSubmitting} = this.props;
 
 		if (isSubmitting) {
 			return <Loader />
@@ -53,8 +53,7 @@ class UploadForm extends Component {
 }
 
 const mapStateToProps = state => ({
-	isSubmitting: state.posts.isSubmitting,
-	success: state.posts.success
+	isSubmitting: state.posts.isSubmitting
 })
 
 export default withRouter(connect(mapStateToProps)(UploadForm));

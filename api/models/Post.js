@@ -7,7 +7,8 @@ var PostSchema = new mongoose.Schema({
 	author: {type: Schema.Types.ObjectId, ref: 'User'},
 	likes: {type: Array},
 	comments: {type: Array},
-	date: { type: Date, default: Date.now }
+	date: { type: Date, default: Date.now },
+	type: { type: String }
 });
 
 mongoose.model('Post', PostSchema);

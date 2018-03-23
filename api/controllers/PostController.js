@@ -9,11 +9,12 @@ var VerifyToken = require('../middleware/VerifyToken');
 var resizeFile = require('../middleware/FileResize');
 require('dotenv').config();
 
+router.use(bodyParser.urlencoded({ extended: true }));
+
 //Multer storage
 var multer = require('multer');
 const crypto = require('crypto');
 var mime = require('mime');
-
 var storage = multer.diskStorage({
   destination: function(req, file, callback) {
     callback(null, './uploads')
@@ -24,10 +25,8 @@ var storage = multer.diskStorage({
     })
   }
 })
-
 var upload = multer({ storage: storage })
 
-router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/all', VerifyToken, function(req, res) {
   Post.find({}, null, { sort: '-date' })
@@ -39,7 +38,22 @@ router.get('/all', VerifyToken, function(req, res) {
     })
 })
 
-function uploadFile(file) {
+function fileIsAllowed(file) {
+  let fileType = 'image';
+  var fileTypes = /jpeg|jpg|png|mp4|wmv|avi|mkv/;
+  var vidTypes = /mp4|wmv|avi|mkv/;
+  var filetypeAllowed = fileTypes.test(file.mimetype);
+  if (vidTypes.test(file.mimetype)) {
+    fileType = 'video';
+  }
+
+  return {
+    type: fileType,
+    allowed: filetypeAllowed
+  };
+}
+
+function uploadFile(file, filetype) {
 
   return new Promise(function(resolve, reject) {
     if (process.env.NODE_ENV === 'production') {
@@ -50,20 +64,35 @@ function uploadFile(file) {
         api_secret: process.env.CLOUD_API_SECRET
       });
 
-      cloudinary.v2.uploader.upload(file.path, { width: 640 }, function(err, result) {
-        if (err) reject(err)
+      // if (filetype === 'video') {
+      //   console.log('Uploading video..')
+      //   cloudinary.v2.uploader.upload(file.path, { resource_type: "video"}, function(err, result) {
+      //     if (err) return reject(err)
 
-        resolve(result.secure_url)
+      //     return resolve(result.secure_url)
+      //   })
+      // }
+      console.log('Uploading file: ' + file.path)
+      cloudinary.v2.uploader.upload(file.path, { resource_type: "auto", width: 640 }, function(err, result) {
+        if (err) return reject(err)
+
+        return resolve(result.secure_url)
       })
     } else {
-      resolve('/api/static/' + file.filename)
+      return resolve('/api/static/' + file.filename)
     }
   });
 
 }
 
 router.post('/', VerifyToken, upload.single('mediapost'), async function(req, res) {
-    let filePath = await uploadFile(req.file);
+    let fileType = fileIsAllowed(req.file)
+    console.log(fileType)
+    if (!fileType.allowed) {
+      return res.status(406).send({error: 'Filetype not allowed.'})
+    }
+
+    let filePath = await uploadFile(req.file, fileType.type);
     if (!filePath) {
       return res.status(500).send({error: filePath})
     }
@@ -73,7 +102,8 @@ router.post('/', VerifyToken, upload.single('mediapost'), async function(req, re
           image: filePath,
           description: req.body.description,
           author: req.userId,
-          author_id: req.userId
+          author_id: req.userId,
+          type: fileType.type
         }).
         then(post => {
             User.findByIdAndUpdate(req.userId, { $push: { posts: post._id } }, function(error, user) {
